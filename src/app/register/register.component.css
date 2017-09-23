@@ -1,0 +1,14 @@
+
+#form-container{
+    padding: 1em;
+}
+#titulo-form{
+    color: #1a237e;
+    padding: .5em;
+    
+    text-align: center;
+}
+#subtitulo-form{
+    padding: 0em;
+    text-align: center;
+}

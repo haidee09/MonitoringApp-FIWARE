@@ -1,0 +1,7 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
