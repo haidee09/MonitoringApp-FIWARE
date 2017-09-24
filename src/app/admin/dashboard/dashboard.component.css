@@ -1,3 +1,10 @@
 :host{
     padding: 0;
 }
+#principal-information, #filters{
+    margin: 1em;
+}
+#filters{
+    color: #1a237e;
+    font-style: italic;
+}
