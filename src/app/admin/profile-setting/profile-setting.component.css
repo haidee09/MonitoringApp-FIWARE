@@ -1,16 +1,6 @@
 :host{
     padding: 0;
 }
-#nav-content{
-    background-color: #efebe9 ;
-    height: auto;
-}
-#divider2{
-    background-color:#9e9e9e;
-    padding: .1em;
-    margin-left: 1em;
-    margin-right: 1em;
-}
 #formulario-institucion{
     margin-top: 3%;
     padding-bottom: 4%;

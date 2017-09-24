@@ -1,21 +1,13 @@
 :host{
     padding: 0;
 }
-#nav-content{
-    background-color: #f9fbe7 ;
-    padding: 0;
-    height: auto;
-}
-#divider2{
-    background-color:#1565c0 ;
-    padding: .1em;
-    margin-left: 1em;
-    margin-right: 1em;
-}
 #information{
     margin: 1em;
 }
 #formUsersRegister{
     margin-top: 3%;
     padding-bottom: 4%;
+}
+#results{
+    padding: 1em;
 }

@@ -41,17 +41,41 @@
 #sidebar{
     background-color: #bbdefb;
     padding: 0;
-    /*padding-bottom: 17%;*/
     height: auto;
+}
+.navbar-nav .nav-link{
+    padding-left: 0;
+    padding-right: 0;
+}
+a.active-link:link, a.active-link:visited{
+    background-color: #b2ebf2; 
+    border-radius: 5px; 
+    font-weight: bold;
+    color: #1a237e;
 }
 #navbarDropdownMenuLink{
    padding-left: 8%;
 }
-.fa-angle-down{
-    width: 7px;;
+#navbarNavDropdown .navbar-nav{
+    margin: 0 0 .5em 0;
 }
-ul.navbar-nav li.nav-item a:hover{
-    background-color: #9ccc65;
-    border-radius: 5px;
-    padding: .4em;
+#navbarNavDropdown .navbar-nav .nav-item ul a{
+    margin: .25em 0 .25em 0;
+}
+#navbarNavDropdown ul.navbar-nav li.nav-item a:hover{
+    font-weight: bold;
+    color: #1a237e;
+}
+
+/*ESTILOS CONTENIDO <router-outlet></router-outlet>*/
+#nav-content{
+    background-color: #f9fbe7;
+    padding: 0;
+    height: auto;
+}
+#divider2{
+    background-color:#1565c0;
+    padding: 0;
+    margin-left: 1em;
+    margin-right: 1em;
 }
