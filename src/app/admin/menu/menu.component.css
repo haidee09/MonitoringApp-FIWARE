@@ -37,6 +37,9 @@
     padding: 0;
     height: auto;
 }
+#nav-sidebar{
+    padding: 0 1em 0 1em;
+}
 .navbar-nav .nav-link{
     padding-left: 0;
     padding-right: 0;

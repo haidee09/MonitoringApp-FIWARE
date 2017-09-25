@@ -1,10 +1,10 @@
 <div class="col-12" id="nav-content">
   <nav class="navbar col-12">
-    <h2 style="color: #1a237e;"> Users Register </h2>
+    <h2 style="color: #1a237e;"> Security Guards Administration </h2>
   </nav>
   <div id="divider2"></div>
   <section id="information">
-    <p class="text-justify"> As a Administrator, you can create, edit, update and delete users groups. The users created will can access to the application according to the role provided. </p>
+    <p class="text-justify"> As a Administrator, you can create, edit, update and delete groups of security guards separated for campus and zones. The groups created will be visualized for all the security guards. </p>
     <p class="text-justify">  </p>
   </section>
   <div class="container" id="formUsersRegister">
@@ -12,41 +12,80 @@
       <div class="col-lg-8 col-md-8 col-sm-12">
         <div class="card border border-dark">
           <div class="card-header text-center font-weight-bold text-primary"> 
-            <h3 id="titulo-form" class="text-success">  Users Form Data</h3>
+            <h3 id="titulo-form" class="text-success">  Security Guards Form Data</h3>
           </div>
           <div class="card-body">    
             <form>  
-              <div class="form-group row"> 
-                <div class="col-2 d-flex justify-content-center">
-                  <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" id="InputName" placeholder=" First name">
-                </div> 
-                <div class="col">
-                  <input type="text" class="form-control" id="InputLastName" placeholder="Last name">
-                </div> 
-              </div>
               <div class="form-group row">
                 <div class="col-2 d-flex justify-content-center">
-                  <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
-                </div> 
-                <div class="col-10">
-                  <input type="text" class="form-control" id="InputEmail" placeholder="example@domain.com">  
-                </div>                                 
-              </div>
-              <div class="form-group row">
-                <div class="col-2 d-flex justify-content-center">
-                  <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+                  <i class="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputRole" class="form-control">
-                  <option selected>Choose a User Role</option>
-                  <option value="">User</option>
-                  <option value="">Security Guard</option>
+                  <select id="InputSGName" class="form-control">
+                  <option selected disabled>Select a security guard name</option>
+                  <option value="">Security guard name 1</option>
+                  <option value="">Security guard name 2</option>
+                  <option value="">Security guard name 3</option>
                   </select>  
                 </div>
               </div>
+              <div class="form-group row">
+                <div class="col-2 d-flex justify-content-center">
+                  <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="col-10">
+                  <select id="InputCampus" class="form-control">
+                  <option disabled>Select a campus name</option>
+                  <option value="" selected>Campus A</option>
+                  <option value="">Campus B</option>
+                  <option value="">Campus C</option>
+                  </select>  
+                </div>
+              </div>
+              <div class="form-group row">
+                <div class="col-2 d-flex justify-content-center">
+                  <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="col-10">
+                  <select id="InputZone" class="form-control">
+                  <option disabled>Select a zone of the campus</option>
+                  <option value="" selected>Zone A1</option>
+                  <option value="">Zone A2</option>
+                  <option value="">Zone A3</option>
+                  </select>  
+                </div>
+              </div>
+              <div class="form-group row justify-content-center">
+                <div class="col-2 d-flex justify-content-center">
+                  <i class="fa fa-clock-o fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="col-5">
+                  <h5 class="text-left">Check in Time</h5>
+                </div>
+                <div class="col-5">
+                  <h5>Departure Time</h5>
+                </div>
+              </div>
+              <div class="form-group row justify-content-center">                
+                <div class="col-2">
+                  <input type="text" class="form-control text-center" id="InputCheckInTimeHours" placeholder=" 00">
+                </div> 
+                <div class="col-1">
+                  <h2>:</h2>
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control text-center" id="InputDepartureTimeMInutes" placeholder="00">
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control text-center" id="InputDepartureTimeHours" placeholder=" 00">
+                </div> 
+                <div class="col-1">
+                  <h2>:</h2>
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control text-center" id="InputDepartureTimeMInutes" placeholder="00">
+                </div>    
+              </div> 
               <div class="row justify-content-center">   
                 <div class="col-4">
                   <button type="button" class="col-12 btn btn-success"> Add</button>
@@ -90,7 +129,9 @@
             <td>mark@hotmail.com</td>
             <td>U</td>
             <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
+            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>            
+            <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
+            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>-->
           </tr>
           <tr>
             <th scope="row" class="text-center">2</th>
