@@ -4,6 +4,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Importar las rutas de este módulo sus  componentes.
 import { AdminRoutingModule, routableComponents } from './admin-routing.module';
+import { CampusZonesMapComponent } from './campus-zones-map/campus-zones-map.component';
 
 @NgModule({
   imports: [
@@ -12,6 +13,6 @@ import { AdminRoutingModule, routableComponents } from './admin-routing.module';
     NgxChartsModule,
     BrowserAnimationsModule
   ],
-  declarations: [routableComponents]
+  declarations: [routableComponents, CampusZonesMapComponent]
 })
 export class AdminModule { }

@@ -1,3 +1,13 @@
 :host{
     padding: 0;
 }
+#information{
+    margin: 1em;
+}
+#formUsersRegister{
+    margin-top: 3%;
+    padding-bottom: 4%;
+}
+#results{
+    padding: 1em;
+}
