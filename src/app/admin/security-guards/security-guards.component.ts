@@ -6,11 +6,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./security-guards.component.css'],
   host:{'class':'col-xl-10'}
 })
-export class SecurityGuardsComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+export class SecurityGuardsComponent{
+  guardname:any;
+  zonename:any;
+  campusname:any;
+  checkinhour:any;
+  checkinminute:any;
+  departurehour:any;
+  departureminute:any;
+  clearInputs(){
+    this.guardname = "";
+    this.zonename = "";
+    this.campusname = "";
+    this.checkinhour = "";
+    this.checkinminute = "";
+    this.departurehour = "";
+    this.departureminute = "";
   }
-
 }

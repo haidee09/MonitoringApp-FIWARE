@@ -21,10 +21,10 @@
                   <i class="fa fa-user fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" id="InputName" placeholder=" First name">
+                  <input type="text" class="form-control" id="InputName" placeholder="First name" [(ngModel)]="firstname" name="firstname">
                 </div> 
                 <div class="col">
-                  <input type="text" class="form-control" id="InputLastName" placeholder="Last name">
+                  <input type="text" class="form-control" id="InputLastName" placeholder="Last name" [(ngModel)]="lastname" name="lastname">
                 </div> 
               </div>
               <div class="form-group row">
@@ -32,7 +32,7 @@
                   <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
                 </div> 
                 <div class="col-10">
-                  <input type="text" class="form-control" id="InputEmail" placeholder="example@domain.com">  
+                  <input type="text" class="form-control" id="InputEmail" placeholder="example@domain.com" [(ngModel)]="email" name="email">  
                 </div>                                 
               </div>
               <div class="form-group row">
@@ -40,10 +40,10 @@
                   <i class="fa fa-users fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputRole" class="form-control">
-                  <option selected>Choose a User Role</option>
-                  <option value="">User</option>
-                  <option value="">Security Guard</option>
+                  <select id="InputRole" class="form-control" [(ngModel)]="role" name="role">
+                  <option selected disabled>Choose a User Role</option>
+                  <option value="U">User</option>
+                  <option value="SG">Security Guard</option>
                   </select>  
                 </div>
               </div>
@@ -52,10 +52,10 @@
                   <button type="button" class="col-12 btn btn-success"> Add</button>
                 </div>  
                 <div class="col-4">
-                  <button [routerLink]="['/login']"type="button" class="col-12 btn btn-info">Search </button>
+                  <button type="button" class="col-12 btn btn-info">Search </button>
                 </div>
                 <div class="col-4">
-                  <button [routerLink]="['/login']"type="button" class="col-12 btn btn-warning"> Clear </button>
+                  <button type="button" class="col-12 btn btn-warning" (click)="clearInputs()"> Clear </button>
                 </div>      
               </div>  
             </form>
@@ -84,21 +84,21 @@
       <tbody>
           <tr>
             <th scope="row" class="text-center">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>mark@hotmail.com</td>
+            <td>Jorge</td>
+            <td>Palacios</td>
+            <td></td>
+            <td>jorge.palacios@hotmail.com</td>
             <td>U</td>
             <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
             <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
           </tr>
           <tr>
             <th scope="row" class="text-center">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>jacob@gmail.com</td>
-            <td>U</td>
+            <td>Roberto</td>
+            <td>Jimenez</td>
+            <td></td>
+            <td>roberto.jimenez@hotmail.com</td>
+            <td>SG</td>
             <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
             <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
             <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
@@ -106,11 +106,11 @@
           </tr>
           <tr>
             <th scope="row" class="text-center">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>larry@hotmail.com</td>
-            <td>SG</td>
+            <td>Diana</td>
+            <td>González</td>
+            <td></td>
+            <td>diana.gonzales@hotmail.com</td>
+            <td>U</td>
             <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
             <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
             <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>

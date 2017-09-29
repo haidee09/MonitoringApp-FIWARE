@@ -2,17 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 //Importar las rutas de este módulo sus  componentes.
 import { AdminRoutingModule, routableComponents } from './admin-routing.module';
-import { CampusZonesMapComponent } from './campus-zones-map/campus-zones-map.component';
+//import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+//import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
+
 
 @NgModule({
   imports: [
     CommonModule,
     AdminRoutingModule,
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
+    //LeafletDrawModule,
+    //LeafletModule
   ],
-  declarations: [routableComponents, CampusZonesMapComponent]
+  declarations: [routableComponents]
 })
 export class AdminModule { }

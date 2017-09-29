@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   single: any[];
   multi: any[];
 
-  view: any[] = [];
+  view: any[] = [500,500];
 
   // options
   showXAxis = true;
@@ -21,12 +21,21 @@ export class DashboardComponent implements OnInit {
   gradient = true;
   showLegend = true;
   showXAxisLabel = true;
-  xAxisLabel = 'Country';
+  xAxisLabel = 'Alert';
   showYAxisLabel = true;
-  yAxisLabel = 'Population';
+  yAxisLabel = 'Counting';
+  
+  // pie
+  showLabels = true;
+  explodeSlices = false;
+  doughnut = false;
+
 
   colorScheme = {
-    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
+    domain: ['#aed581', '#ce93d8', '#ffcc80']
+  };
+  colorSchemePie = {
+    domain: ['#aed581', '#ce93d8', '#ffcc80', '#AAAAAA']
   };
 
   constructor() {

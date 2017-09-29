@@ -1,34 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import L from 'leaflet';
-//import L from 'leaflet';
-//import L from 'leaflet-draw';
+import * as L from 'leaflet';
 
 @Component({
-  selector: 'app-campus-zones-map',
-  templateUrl: './campus-zones-map.component.html',
-  styleUrls: ['./campus-zones-map.component.css'],
+  selector: 'app-access-log',
+  templateUrl: './access-log.component.html',
+  styleUrls: ['./access-log.component.css'],
   host:{'class':'col-xl-10'}
 })
-export class CampusZonesMapComponent implements OnInit{
+export class AccessLogComponent{
 
-  selectCampus:boolean;
-  selectZone:boolean;
-  //map:any;
-  //marcador: any;
-  //polygon:any;
-  //popupMap:any;
-  constructor() {
-    this.selectCampus = false;
-    this.selectZone = false;
-  }
+  constructor() { }
+
   ngOnInit() {
+    
     var map = L.map('map').setView([18.87627,-99.21966], 18);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
-    L.marker([18.87649,-99.21986]).addTo(map)
-    .bindPopup('Edificio de Computación.<br>CENIDET Campus Palmira.')
-    .openPopup();
+    var marcador1 = L.marker([18.87649,-99.21986]).addTo(map)
+    .bindPopup('Jorge Palacios<br>Edificio de Computación.<br>CENIDET Campus Palmira.')
+    var marcador2 = L.marker([18.87649, -99.21959]).addTo(map)
+    .bindPopup('Roberto Jimenez<br>Edificio de Computación.<br>CENIDET Campus Palmira.')
+    var marcador3 = L.marker([18.87641, -99.21975]).addTo(map)
+    .bindPopup('Diana	González<br>Edificio de Computación.<br>CENIDET Campus Palmira.')
+    
     var campusCenidet = L.polygon([
       [18.87574, -99.21975],
       [18.87681, -99.21932],
@@ -37,7 +32,7 @@ export class CampusZonesMapComponent implements OnInit{
       [18.87627, -99.22014],
       [18.875874, -99.220155]
     ]).addTo(map);
-    campusCenidet.bindPopup("CAMPUS CENIDET PALMIRA.");
+    campusCenidet.bindPopup("CENIDET Campus Palmira.");
     var areaComputoCenidet= L.polygon([
       [18.87641, -99.22001],
       [18.87631, -99.21953],
@@ -52,15 +47,7 @@ export class CampusZonesMapComponent implements OnInit{
       popupMap.setContent("Coordenadas " + e.latlng.toString())
       popupMap.openOn(map);
     }   
-    map.on('click',onMapClick);
-  }
-  campusForm(){
-    this.selectCampus=true;
-    this.selectZone=false;
-  }
-  zoneForm(){
-    this.selectZone=true;
-    this.selectCampus=false;
+    map.on('click', onMapClick);
   }
 
 }

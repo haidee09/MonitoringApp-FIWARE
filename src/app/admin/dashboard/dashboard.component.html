@@ -1,33 +1,31 @@
-
-  <div class="col-12" id="nav-content">
+  <div class="" id="nav-content">
     <nav class="navbar">
       <h2 style="color: #1a237e;"> Dashboard </h2>
     </nav>
     <section id="principal-information">
       <p class="text-justify"> Alert Charts - Record. </p>
-      <p class="text-justify"> NOTE: The record are shown per alert type monthly. </p>
+      <p class="text-justify"> NOTE: The record are shown per alert type. </p>
     </section>
     <section id="filters">
       <h4>Chart Filters</h4>
       <div class="">
-        <div class="row">          
+        <div class="row">
           <div class="col-4">
             <p><i class="fa fa-map-o" aria-hidden="true"></i> Select a campus</p>
             <select id="InputCampus" class="form-control">
               <option> Choose a Campus</option>
-              <option value="" selected>Campus A</option>
-              <option value="">Campus B</option>
-              <option value="">Campus C</option>
-            </select>  
+              <option value="" selected>Palmira</option>
+            </select>
           </div>
           <div class="col-4">
             <p><i class="fa fa-map-marker" aria-hidden="true"></i> Select a zone map</p>
             <select id="InputZone" class="form-control">
               <option selected>Choose a Zone Map</option>
-              <option value="">Zone A1</option>
-              <option value="">Zone A2</option>
-              <option value="">Zone A3</option>
-            </select>    
+              <option value="">Computacion</option>
+              <option value="">Administracion</option>
+              <option value="">Electrónica</option>
+              <option value="">Cafeteria</option>
+            </select>
           </div>
           <div class="col-4">
             <p><i class="fa fa-street-view" aria-hidden="true"></i> Select a user role</p>
@@ -35,26 +33,42 @@
               <option selected>Choose a User Role</option>
               <option value="">User</option>
               <option value="">Security Guard</option>
-            </select>    
+            </select>
           </div>
         </div>
       </div>
-      <section class="row"id="graphs">
-        <ngx-charts-bar-vertical
-          class="col-12 d-flex justify-content-center"
-          [view]="view"
-          [scheme]="colorScheme"
-          [results]="single"
-          [gradient]="gradient"
-          [xAxis]="showXAxis"
-          [yAxis]="showYAxis"
-          [legend]="showLegend"
-          [showXAxisLabel]="showXAxisLabel"
-          [showYAxisLabel]="showYAxisLabel"
-          [xAxisLabel]="xAxisLabel"
-          [yAxisLabel]="yAxisLabel"
-          (select)="onSelect($event)">
-        </ngx-charts-bar-vertical> 
-      </section>
     </section>
-  </div>   
+    <section id="graphs">
+      <div class="container-fluid hidden-sm-down">
+        <div class="row">
+          <div class="col-lg-6 col-sm-11">
+            <ngx-charts-bar-vertical
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+          </div>  
+          <div class="col-lg-6 col-sm-11">
+            <ngx-charts-pie-chart
+              [view]="view"
+              [scheme]="colorSchemePie"
+              [results]="single"
+              [explodeSlices]="explodeSlices"
+              [labels]="showLabels"
+              [doughnut]="doughnut"
+              [gradient]="gradient"
+              (select)="onSelect($event)">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+    </div>   
+    </section>
+  </div>

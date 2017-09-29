@@ -1,8 +1,8 @@
 <div class="" id="container-principal">
     <nav class="navbar navbar-light  navbar-expand flex-column flex-md-row bd-navbar" id="nav-superior">
       <a class="navbar-brand col-auto mr-auto" href="#">
-        <img src="../../assets/images/Logo-FIWARE-Vert.png" width="70" height="50" class="d-inline-block align-middle" alt="">
-        FIWARE Monitor v1.0
+        <img src="./assets/images/Logo-FIWARE-Vert.png" width="70" height="50" class="d-inline-block align-middle" alt="">
+        FIWARE Driving Monitor v1.0
       </a>
       <ul class="navbar-nav" id="items-navbar-superior">
         <li class="nav-item dropdown col-auto">
@@ -30,11 +30,11 @@
             <i class="fa fa-user-circle" aria-hidden="true"></i> Administrator
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">
+            <a class="dropdown-item" routerLink="/login">
               <i class="fa fa-sign-out" aria-hidden="true"></i>Log Out
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i>
+            <a class="dropdown-item" routerLink="/admin/profile-setting"><i class="fa fa-cog" aria-hidden="true"></i>
               Profile Setting
             </a>
           </div>
@@ -47,42 +47,44 @@
         <div class="col-xl-2" id="sidebar">
           <div id="header-sidebar">
             <a class="navbar-brand d-flex justify-content-center" href="#">
-              <img src="../../assets/images/logo-fiware.png" width="180" height="50" class="d-inline-block align-middle" alt="">
+              <img src="./assets/images/logo-fiware.png" width="180" height="50" class="d-inline-block align-middle" alt="">
             </a>
             <h5 class="d-flex justify-content-center" href="#" id="titulo-menu">
               SmartCities
             </h5>
           </div>  
+          <!-- aqui agregar/quitar navbar class to nav element-->
           <nav class="navbar-expand-xl col-12" id="nav-sidebar">            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <img src="../../assets/images/hamburger-menu-icon.png" width="40" height="40" alt=""><span class="navbar-toggler-icon"></span>
+              <img src="./assets/images/hamburger-menu-icon.png" width="40" height="40" alt=""><span class="navbar-toggler-icon"></span>
             </button>            
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav text-center flex-column" id="navbarNavDropdown">
                 <li class="nav-item">
-                  <a class="nav-link" [routerLink]="['/admin/dashboard']" routerLinkActive="active-link">
+                  <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active-link">
                   <i class="fa fa-bar-chart fa-2x text-dark" aria-hidden="true"></i>Dashboard</a>
                 </li>   
                 <li class="nav-item">
                   <a class="nav-link" data-target="#navbarDropdownMenuLink" data-toggle="collapse" href="#" aria-controls="navbarDropdownMenuLink" aria-expanded="true">
                   <i class="fa fa-user-plus fa-2x text-dark" aria-hidden="true"></i>UserAdministration<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                   <ul class="collapse show" id="navbarDropdownMenuLink">
-                    <a class="nav-link" [routerLink]="['/admin/users-register']" routerLinkActive="active-link">
+                    <a class="nav-link" routerLink="/admin/users-register" routerLinkActive="active-link">
                       <i class="fa fa-users text-dark" aria-hidden="true"></i>
                       Users Register
                     </a>
-                    <a class="nav-link" [routerLink]="['/admin/security-guards']"  routerLinkActive="active-link">
+                    <a class="nav-link" routerLink="/admin/security-guards"  routerLinkActive="active-link">
                       <i class="fa fa-user text-dark" aria-hidden="true"></i>
                       Security Guards
                     </a>
-                    <a class="nav-link" [routerLink]="['#']"  routerLinkActive="active-link">
-                      <i class="fa fa-check-circle-o" aria-hidden="true"></i
-                      >Access Log
+                    <a class="nav-link" routerLink="/admin/access-log" routerLinkActive="active-link">
+                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>Access Log
                     </a>
                   </ul>
                 </li> 
                 <li class="nav-item">
-                  <a class="nav-link" href="#"><i class="fa fa-map-o fa-2x text-dark" aria-hidden="true"></i> Campus & Zones</a>
+                  <a class="nav-link" routerLink="/admin/campus-zones" routerLinkActive="active-link">
+                    <i class="fa fa-map-o fa-2x text-dark" aria-hidden="true"></i>Campus & Zones
+                  </a>
                 </li> 
               </ul>
             </div>

@@ -3,7 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
-import { AdminRoutingModule } from './admin/admin-routing.module';
+import { MenuComponent } from './admin/menu/menu.component';
+import { AdminRoutingModule} from './admin/admin-routing.module';
 //Rutas globales de la aplicación 
 const appRoutes: Routes = [
   { path: '', redirectTo:'login', pathMatch:'full'},
@@ -13,13 +14,8 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes),
-    AdminRoutingModule
-  ],
-  exports: [ 
-    RouterModule
-  ],
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
   providers: [
     /*AuthGuardAdmin,
     AuthGuardUsuario,

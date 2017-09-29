@@ -21,11 +21,9 @@
                   <i class="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputSGName" class="form-control">
-                  <option selected disabled>Select a security guard name</option>
-                  <option value="">Security guard name 1</option>
-                  <option value="">Security guard name 2</option>
-                  <option value="">Security guard name 3</option>
+                  <select id="InputSGName" class="form-control" [(ngModel)]="guardname" name="guardname">
+                  <option selected disabled value="">Select a security guard name</option>
+                  <option value="nameguard">Roberto Jimenez</option>
                   </select>  
                 </div>
               </div>
@@ -34,11 +32,9 @@
                   <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputCampus" class="form-control">
-                  <option disabled>Select a campus name</option>
-                  <option value="" selected>Campus A</option>
-                  <option value="">Campus B</option>
-                  <option value="">Campus C</option>
+                  <select id="InputCampus" class="form-control" [(ngModel)]="campusname" name="campusname">
+                  <option selected disabled value="">Select a campus name</option>
+                  <option value="Palmira">Campus Palmira</option>
                   </select>  
                 </div>
               </div>
@@ -47,11 +43,12 @@
                   <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputZone" class="form-control">
-                  <option disabled>Select a zone of the campus</option>
-                  <option value="" selected>Zone A1</option>
-                  <option value="">Zone A2</option>
-                  <option value="">Zone A3</option>
+                  <select id="InputZone" class="form-control" [(ngModel)]="zonename" name="zonename">
+                  <option selected disabled value="">Select a zone of the campus</option>
+                  <option value="Computacion" >Zone Computación</option>
+                  <option value="Administracion">Zone Administración</option>
+                  <option value="Electronica">Zone Electrónica</option>
+                  <option value="Cafeteria">Zona Cafeteria</option>
                   </select>  
                 </div>
               </div>
@@ -68,22 +65,22 @@
               </div>
               <div class="form-group row justify-content-center">                
                 <div class="col-2">
-                  <input type="text" class="form-control text-center" id="InputCheckInTimeHours" placeholder=" 00">
+                  <input type="text" class="form-control text-center" id="InputCheckInTimeHours" placeholder=" 00" [(ngModel)]="checkinhour" name="checkinhour">
                 </div> 
                 <div class="col-1">
                   <h2>:</h2>
                 </div>
                 <div class="col-2">
-                  <input type="text" class="form-control text-center" id="InputDepartureTimeMInutes" placeholder="00">
+                  <input type="text" class="form-control text-center" id="InputDepartureTimeMinutes" placeholder="00" [(ngModel)]="checkinminute" name="checkinminute">
                 </div>
                 <div class="col-2">
-                  <input type="text" class="form-control text-center" id="InputDepartureTimeHours" placeholder=" 00">
+                  <input type="text" class="form-control text-center" id="InputDepartureTimeHours" placeholder=" 00" [(ngModel)]="departurehour" name="departurehour">
                 </div> 
                 <div class="col-1">
                   <h2>:</h2>
                 </div>
                 <div class="col-2">
-                  <input type="text" class="form-control text-center" id="InputDepartureTimeMInutes" placeholder="00">
+                  <input type="text" class="form-control text-center" id="InputDepartureTimeMinutes" placeholder="00" [(ngModel)]="departureminute" name="departureminute">
                 </div>    
               </div> 
               <div class="row justify-content-center">   
@@ -91,10 +88,10 @@
                   <button type="button" class="col-12 btn btn-success"> Add</button>
                 </div>  
                 <div class="col-4">
-                  <button [routerLink]="['/login']"type="button" class="col-12 btn btn-info">Search </button>
+                  <button type="button" class="col-12 btn btn-info">Search </button>
                 </div>
                 <div class="col-4">
-                  <button [routerLink]="['/login']"type="button" class="col-12 btn btn-warning"> Clear </button>
+                  <button type="button" class="col-12 btn btn-warning" (click)="clearInputs()"> Clear </button>
                 </div>      
               </div>  
             </form>
@@ -113,9 +110,10 @@
           <th class="text-center">IDUser</th>
           <th class="text-center">Name</th>
           <th class="text-center">Last Name</th>
-          <th class="text-center">Email</th>
           <th class="text-center">Campus</th>
           <th class="text-center">Zone</th>
+          <th class="text-center">CheckInTime</th>
+          <th class="text-center">DepartureTime</th>
           <th class="text-center">Edit</th>
           <th class="text-center">Delete</th>
         </tr>
@@ -123,37 +121,14 @@
       <tbody>
           <tr>
             <th scope="row" class="text-center">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>mark@hotmail.com</td>
-            <td>Campus A</td>
-            <td>Zone A1</td>
+            <td>Roberto</td>
+            <td>Jimenez</td>
+            <td>Palmira</td>
+            <td>Computación</td>
+            <td>08:00</td>
+            <td>16:00</td>
             <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
             <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>            
-            <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>-->
-          </tr>
-          <tr>
-            <th scope="row" class="text-center">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>jacob@gmail.com</td>
-            <td>CAmpus A</td>
-            <td>Zone A2</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-            <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>-->
-          </tr>
-          <tr>
-            <th scope="row" class="text-center">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>larry@hotmail.com</td>
-            <td>Campus B</td>
-            <td>Zone B1</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
             <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
             <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>-->
           </tr>

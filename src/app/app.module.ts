@@ -7,6 +7,12 @@ import { RegisterModule} from './register/register.module';
 import { AdminModule } from './admin/admin.module';
 import { ForgotpasswordModule } from './forgotpassword/forgotpassword.module';
 
+/*import { LeafletModule } from '@asymmetrik/ngx-leaflet/src/leaflet/leaflet.module';
+import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw/src/leaflet-draw/leaflet-draw.module';
+*/
+//import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+//import { LeafletDrawModule } from '@asymmetrik/ngx-leaflet-draw';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +23,9 @@ import { ForgotpasswordModule } from './forgotpassword/forgotpassword.module';
     LoginModule,
     RegisterModule,
     ForgotpasswordModule,
-    AdminModule
+    AdminModule,
+    //LeafletModule.forRoot(),
+    //LeafletDrawModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
