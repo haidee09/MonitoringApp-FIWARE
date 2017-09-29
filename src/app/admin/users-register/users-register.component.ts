@@ -12,12 +12,12 @@ export class UsersRegisterComponent{
   firstname:any;
   lastname:any;
   email:any;
-  role:any;
+  role:any = null;
   clearInputs(){
     this.firstname = "";
     this.lastname = "";
     this.email = "";
-    this.role = this.role.value;
+    this.role = null;
   }
 
 }

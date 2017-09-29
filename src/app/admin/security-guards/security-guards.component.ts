@@ -7,17 +7,17 @@ import { Component, OnInit } from '@angular/core';
   host:{'class':'col-xl-10'}
 })
 export class SecurityGuardsComponent{
-  guardname:any;
-  zonename:any;
-  campusname:any;
+  guardname:any = null;
+  zonename:any = null;
+  campusname:any = null;
   checkinhour:any;
   checkinminute:any;
   departurehour:any;
   departureminute:any;
   clearInputs(){
-    this.guardname = "";
-    this.zonename = "";
-    this.campusname = "";
+    this.guardname = null;
+    this.zonename = null;
+    this.campusname = null;
     this.checkinhour = "";
     this.checkinminute = "";
     this.departurehour = "";

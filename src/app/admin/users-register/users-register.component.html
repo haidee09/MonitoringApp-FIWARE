@@ -40,8 +40,8 @@
                   <i class="fa fa-users fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputRole" class="form-control" [(ngModel)]="role" name="role">
-                  <option selected disabled>Choose a User Role</option>
+                  <select id="InputRole" class="form-control" [(ngModel)]="role" name="role" (change)="add($event)">
+                  <option value="null" selected disabled>Choose a User Role</option>
                   <option value="U">User</option>
                   <option value="SG">Security Guard</option>
                   </select>  

@@ -11,13 +11,14 @@ WORKDIR /monitoringappfiware
 COPY package.json /monitoringappfiware
 
 # Install dependecies
-RUN npm install
+#RUN npm install
 
 # Get all the code needed to run the app
-COPY /dist /monitoringappfiware
+COPY ./dist /monitoringappfiware
+COPY ./server.js /monitoringappfiware
 
 # Expose the port the app runs in
-EXPOSE 4200
+EXPOSE 3500
 
 # Serve the app
 CMD ["npm", "start"]
