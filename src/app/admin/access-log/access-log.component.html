@@ -46,42 +46,26 @@
                         <a data-toggle="collapse" data-parent="#accordionCampus" href="#collapseOneA" aria-expanded="false" aria-controls="collapseOneA">
                           <h5 class="mb-0">Campus <i class="fa fa-angle-down rotate-icon"></i></h5>                        </a>
                       </div>  
-                      <div id="collapseOneA" class="collapse show" role="tabpanel" aria-labelledby="headingCampus">
-                         
-                              <!--Accordion wrapper-->
-                              <div class="accordion" id="accordionCampus1" role="tablist" aria-multiselectable="true">
-                                <!-- Accordion card -->
-                                <div class="card">
-                                  <div class="card-header" role="tab" id="headingCampusA">
-                                    <a data-toggle="collapse" data-parent="#accordionCampus1" href="#collapseOneA1" aria-expanded="false" aria-controls="collapseOneA1">
-                                        <h6 class="mb-0"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Campus Palmira <i class="fa fa-angle-down rotate-icon"></i></h6>
-                                    </a>
-                                  </div>  
-                                  <div id="collapseOneA1" class="collapse" role="tabpanel" aria-labelledby="headingCampusA">
-                                    <a href="#" class="list-group-item list-group-item-action">Zone Computación</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Zone Administración</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Zone Electrónica</a>
-                                    <a href="#" class="list-group-item list-group-item-action">Zona Cafeteria</a>
-                                  </div>
-                                </div> 
-                              </div>
-                              <!--<div class="accordion" id="accordionCampus2" role="tablist" aria-multiselectable="true">
-                                  
-                                  <div class="card">
-                                    <div class="card-header" role="tab" id="headingCampusB">
-                                      <a data-toggle="collapse" data-parent="#accordionCampus2" href="#collapseOneA2" aria-expanded="false" aria-controls="collapseOneA2">
-                                        <h6 class="mb-0"><i class="fa fa-dot-circle-o" aria-hidden="true"></i>
-                                          Campus B <i class="fa fa-angle-down rotate-icon"></i></h6>
-                                      </a>
-                                    </div>  
-                                    <div id="collapseOneA2" class="collapse" role="tabpanel" aria-labelledby="headingCampusB">
-                                      <a href="#" class="list-group-item list-group-item-action">Zone B1</a>
-                                      <a href="#" class="list-group-item list-group-item-action">Zone B2</a>
-                                      <a href="#" class="list-group-item list-group-item-action">Zone B3</a>
-                                      <a href="#" class="list-group-item list-group-item-action">Zone B4</a>
-                                    </div>
-                                  </div> 
-                                </div> -->
+                      <div id="collapseOneA" class="collapse" role="tabpanel" aria-labelledby="headingCampus">                         
+                        <!--Accordion wrapper-->
+                        <div class="accordion" id="accordionCampus1" role="tablist" aria-multiselectable="true">
+                          <!-- Accordion card -->
+                          <div class="card">
+                            <div class="card-header" role="tab" id="headingCampusA">
+                              <a data-toggle="collapse" data-parent="#accordionCampus1" href="#collapseOneA1" aria-expanded="false" aria-controls="collapseOneA1">
+                                <h6 class="mb-0"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> Campus Palmira <i class="fa fa-angle-down rotate-icon"></i></h6>
+                              </a>
+                            </div>  
+                            <div id="collapseOneA1" class="collapse" role="tabpanel" aria-labelledby="headingCampusA">
+                              <h6 class="text-center" disabled>Select a zone</h6>
+                              <a href="#" class="list-group-item list-group-item-action">Computación</a>
+                              <a href="#" class="list-group-item list-group-item-action">Administración</a>
+                              <a href="#" class="list-group-item list-group-item-action">Electrónica</a>
+                              <a href="#" class="list-group-item list-group-item-action">Cafetería</a>
+                              <a href="#" class="list-group-item list-group-item-action">Auditorio</a>
+                            </div>
+                          </div> 
+                        </div>
                       </div>
                       <div class="card-header" role="tab" id="headingRole">
                         <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseRole" aria-expanded="false" aria-controls="collapseRole">
@@ -110,7 +94,13 @@
           <nav class="navbar col-12 justify-content-center">
             <h2 style="color: #1a237e;"> Institution Map </h2>
           </nav>
-          <div class="container col-12 justify-content-center" id="map"></div>
+          <div class="container col-12 justify-content-center" 
+          id="map"
+          leaflet 
+          leafletDraw
+          [leafletOptions]="options"
+          [leafletDrawOptions]="drawOptions"
+          (leafletMapReady)="onMapReady($event)"></div>
           <div class="row">
               <section id="results">
                   <table class="table table-striped table-bordered table-responsive text-center"> 
@@ -132,7 +122,7 @@
                           <th scope="row" class="text-center">1</th>
                           <td>Jorge</td>
                           <td>Palacios</td>
-                          <td>U</td>
+                          <td>SG</td>
                           <td>Palmira</td>
                           <td>Computación</td>
                           <td>Online</td>
@@ -143,7 +133,7 @@
                           <th scope="row" class="text-center">2</th>
                           <td>Roberto</td>
                           <td>Jimenez</td>
-                          <td>SG</td>
+                          <td>U</td>
                           <td>Palmira</td>
                           <td>Computación</td>
                           <td>Online</td>

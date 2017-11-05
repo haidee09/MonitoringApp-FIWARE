@@ -15,16 +15,16 @@
             <h3 id="titulo-form" class="text-success">  Users Form Data</h3>
           </div>
           <div class="card-body">    
-            <form>  
+            <form (ngSubmit)="registerData()">  
               <div class="form-group row"> 
                 <div class="col-2 d-flex justify-content-center">
                   <i class="fa fa-user fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" id="InputName" placeholder="First name" [(ngModel)]="firstname" name="firstname">
+                  <input type="text" class="form-control" id="InputName" placeholder="First name" [(ngModel)]="object.name" name="objectname">
                 </div> 
                 <div class="col">
-                  <input type="text" class="form-control" id="InputLastName" placeholder="Last name" [(ngModel)]="lastname" name="lastname">
+                  <input type="text" class="form-control" id="InputLastName" placeholder="Last name" [(ngModel)]="object.lastname" name="lastname">
                 </div> 
               </div>
               <div class="form-group row">
@@ -32,7 +32,7 @@
                   <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
                 </div> 
                 <div class="col-10">
-                  <input type="text" class="form-control" id="InputEmail" placeholder="example@domain.com" [(ngModel)]="email" name="email">  
+                  <input type="text" class="form-control" id="InputEmail" placeholder="example@domain.com" [(ngModel)]="object.email" name="email">  
                 </div>                                 
               </div>
               <div class="form-group row">
@@ -40,16 +40,17 @@
                   <i class="fa fa-users fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputRole" class="form-control" [(ngModel)]="role" name="role" (change)="add($event)">
+                  <!--Here it could be ingresed database options of roles-->
+                  <select id="InputRole" class="form-control" [(ngModel)]="role" name="role">
                   <option value="null" selected disabled>Choose a User Role</option>
-                  <option value="U">User</option>
-                  <option value="SG">Security Guard</option>
+                  <option value="user">User</option>
+                  <option value="security_guard">Security Guard</option>
                   </select>  
                 </div>
               </div>
               <div class="row justify-content-center">   
                 <div class="col-4">
-                  <button type="button" class="col-12 btn btn-success"> Add</button>
+                  <button type="submit" class="col-12 btn btn-success"> Add</button>
                 </div>  
                 <div class="col-4">
                   <button type="button" class="col-12 btn btn-info">Search </button>
@@ -83,16 +84,16 @@
       </thead>
       <tbody>
           <tr>
-            <th scope="row" class="text-center">1</th>
+            <th scope="row" class="text-center">13680275</th>
             <td>Jorge</td>
             <td>Palacios</td>
-            <td></td>
+            <td>13680275</td>
             <td>jorge.palacios@hotmail.com</td>
-            <td>U</td>
+            <td>SG</td>
             <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
             <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
           </tr>
-          <tr>
+          <!--<tr>
             <th scope="row" class="text-center">2</th>
             <td>Roberto</td>
             <td>Jimenez</td>
@@ -102,7 +103,7 @@
             <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
             <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
             <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>-->
+            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
           </tr>
           <tr>
             <th scope="row" class="text-center">3</th>
@@ -114,8 +115,8 @@
             <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
             <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
             <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>-->
-          </tr>
+            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
+          </tr>-->
       </tbody>
     </table>
   </section>

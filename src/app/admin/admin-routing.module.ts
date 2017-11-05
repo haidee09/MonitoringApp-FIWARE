@@ -10,7 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 
 //RUtas del modulo Administrador
 export const routes: Routes= [  
-  { path: 'admin', redirectTo:'admin/dashboard'},
+  { path: 'admin', redirectTo:'admin/profile-setting'},
   { path: 'admin', component:MenuComponent,
     children:[
       {path:'dashboard', component: DashboardComponent},
