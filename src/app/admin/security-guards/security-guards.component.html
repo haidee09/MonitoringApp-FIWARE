@@ -9,48 +9,62 @@
   </section>
   <div class="container" id="formUsersRegister">
     <div class="row justify-content-center"> <!-- para centrar el contenedor (el div)-->
-      <div class="col-lg-8 col-md-8 col-sm-12">
+      <div class="col-lg-9 col-md-9 col-sm-12">
         <div class="card">
           <div class="card-header text-center font-weight-bold text-primary"> 
             <h3 id="titulo-form" class="text-success">  Security Guards Form Data</h3>
           </div>
           <div class="card-body">    
-            <form>  
-              <div class="form-group row">
+            <form (ngSubmit)="registerSG()">
+              <div class="form-group row"> 
                 <div class="col-2 d-flex justify-content-center">
                   <i class="fa fa-id-card-o fa-2x" aria-hidden="true"></i>
                 </div>
-                <div class="col-10">
-                  <select id="InputSGName" class="form-control" [(ngModel)]="guardname" name="guardname">
-                  <option selected disabled value="null">Select a security guard name</option>
-                  <option value="nameguard">Jorge Palacios</option>
-                  </select>  
-                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="InputID" placeholder="ID Security Guard" [(ngModel)]="sg.idUser" name="id">
+                </div> 
               </div>
+              <div class="form-group row"> 
+                <div class="col-2 d-flex justify-content-center">
+                  <i class="fa fa-user fa-2x" aria-hidden="true"></i>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id="InputName" placeholder="First name" [(ngModel)]="sg.name" name="name">
+                </div> 
+                <div class="col">
+                   <input type="text" class="form-control" id="InputLastName" placeholder="Last name" [(ngModel)]="sg.lastName" name="lastName">
+                </div> 
+              </div>
+              <div class="form-group row">
+                <div class="col-2 d-flex justify-content-center">
+                  <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
+                </div> 
+                <div class="col-10">
+                  <input type="text" class="form-control" id="InputEmail" placeholder="example@domain.com" [(ngModel)]="sg.email" name="email">  
+                </div>                                 
+              </div>  
               <div class="form-group row">
                 <div class="col-2 d-flex justify-content-center">
                   <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputCampus" class="form-control" [(ngModel)]="campusname" name="campusname">
-                  <option selected disabled value="null">Select a campus name</option>
-                  <option value="Palmira">Palmira</option>
-                  </select>  
-                </div>
+                  <label for="InputCampusList">Campus Name</label>
+                  <select id="InputCampusList" class="form-control" [(ngModel)]="selectedCampus" (change)="onChangeValueCampus($event.target.value)" name="selectedCampus">       
+                    <option selected value="null" disabled>Select a campus name</option>
+                    <option *ngFor="let item of listCampus" [ngValue]="item['_id']"> {{item.name}} </option>
+                  </select>
+                </div> 
               </div>
-              <div class="form-group row">
+              <div class="form-group row" *ngIf="selectedCampus!=null">
                 <div class="col-2 d-flex justify-content-center">
                   <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                 </div>
                 <div class="col-10">
-                  <select id="InputZone" class="form-control" [(ngModel)]="zonename" name="zonename">
-                  <option selected disabled value="null">Select a zone of the campus</option>
-                  <option value="Computacion">Electrónica</option>
-                  <!--<option value="Administracion">Administración</option>
-                  <option value="Electronica">Electrónica</option>
-                  <option value="Cafeteria">Cafeteria</option>
-                  <option value="Auditorio">Auditorio</option>-->
-                  </select>  
+                  <label for="InputZoneName">Zone Name</label>
+                  <select id="InputCampusList" class="form-control" [(ngModel)]="selectedZone" name="selectedZone">       
+                    <option selected value="null" disabled>Select the zone name</option>
+                    <option *ngFor="let item of listZonesCampusSelected" [ngValue]="item._id"> {{item.name}} </option>
+                  </select>
                 </div>
               </div>
               <div class="form-group row justify-content-center">
@@ -86,7 +100,7 @@
               </div> 
               <div class="row justify-content-center">   
                 <div class="col-4">
-                  <button type="button" class="col-12 btn btn-success"> Add</button>
+                  <button type="submit" class="col-12 btn btn-success"> Add</button>
                 </div>  
                 <div class="col-4">
                   <button type="button" class="col-12 btn btn-info">Search </button>

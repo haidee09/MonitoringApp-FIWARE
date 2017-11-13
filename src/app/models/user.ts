@@ -14,6 +14,7 @@ export class User{
     refDevices: Array<String>;
     refVehicles: Array<String>;
     status: any;
+    role: any;
 
     constructor(
         idUser:string,
@@ -30,7 +31,8 @@ export class User{
         refUserContact: string,
         refDevices: Array<String>,
         refVehicles: Array<String>,
-        status: any
+        status: any,
+        role: any
     ){
         
     }

@@ -2,12 +2,12 @@
     <nav class="navbar navbar-light  navbar-expand flex-column flex-md-row bd-navbar" id="nav-superior">
       <a class="navbar-brand col-auto mr-auto" href="#">
         <img src="./assets/images/logo.png" width="70" height="70" class="d-inline-block align-middle" alt="">
-        FIWARE Driving Monitor v1.0
+        FIWARE Driving Monitor 
       </a>
       <ul class="navbar-nav" id="items-navbar-superior">
         <li class="nav-item dropdown col-auto">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 
-            <i class="fa fa-bell-o" aria-hidden="true"></i> Notifications <!--<span class="badge badge-primary badge-pill">14</span>-->
+            <i class="fa fa-bell-o" aria-hidden="true"></i> Notifications <span class="badge badge-primary badge-pill">14</span>
           </a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i>
@@ -50,7 +50,7 @@
               <img src="./assets/images/logo-fiware.png" width="180" height="50" class="d-inline-block align-middle" alt="">
             </a>
             <h5 class="d-flex justify-content-center" href="#" id="titulo-menu">
-              SmartCities
+              SmartSecurity
             </h5>
           </div>  
           <!-- aqui agregar/quitar navbar class to nav element-->
@@ -59,21 +59,21 @@
               <img src="./assets/images/hamburger-menu-icon.png" width="40" height="40" alt=""><span class="navbar-toggler-icon"></span>
             </button>            
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav text-center flex-column" id="navbarNavDropdown">
+              <ul class="navbar-nav flex-column" id="navbarNavDropdown">
                 <li class="nav-item">
                   <a class="nav-link" routerLink="/admin/dashboard" routerLinkActive="active-link">
-                  <i class="fa fa-bar-chart fa-2x text-dark" aria-hidden="true"></i>Dashboard</a>
+                  <i class="fa fa-bar-chart fa-2x " aria-hidden="true"></i>Dashboard</a>
                 </li>   
                 <li class="nav-item">
                   <a class="nav-link" data-target="#navbarDropdownMenuLink" data-toggle="collapse" href="#" aria-controls="navbarDropdownMenuLink" aria-expanded="true">
-                  <i class="fa fa-user-plus fa-2x text-dark" aria-hidden="true"></i>UserAdministration<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                    <i class="fa fa-user-o fa-2x" aria-hidden="true"></i>UserAdministration<i class="fa fa-angle-down" aria-hidden="true"></i></a>
                   <ul class="collapse show" id="navbarDropdownMenuLink">
                     <a class="nav-link" routerLink="/admin/users-register" routerLinkActive="active-link">
-                      <i class="fa fa-users text-dark" aria-hidden="true"></i>
-                      Users Register
+                      <i class="fa fa-users " aria-hidden="true"></i>
+                      Users
                     </a>
                     <a class="nav-link" routerLink="/admin/security-guards"  routerLinkActive="active-link">
-                      <i class="fa fa-user text-dark" aria-hidden="true"></i>
+                      <i class="fa fa-user " aria-hidden="true"></i>
                       Security Guards
                     </a>
                     <a class="nav-link" routerLink="/admin/access-log" routerLinkActive="active-link">
@@ -83,7 +83,12 @@
                 </li> 
                 <li class="nav-item">
                   <a class="nav-link" routerLink="/admin/campus-zones" routerLinkActive="active-link">
-                    <i class="fa fa-map-o fa-2x text-dark" aria-hidden="true"></i>Campus & Zones
+                    <i class="fa fa-map-o fa-2x " aria-hidden="true"></i>Campus & Zones
+                  </a>
+                </li> 
+                <li class="nav-item">
+                  <a class="nav-link" routerLink="/admin/alerts" routerLinkActive="active-link">
+                    <i class="fa fa-bell-o fa-2x" aria-hidden="true"></i>Alerts
                   </a>
                 </li> 
               </ul>

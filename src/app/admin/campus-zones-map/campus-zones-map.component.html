@@ -1,6 +1,6 @@
 <div class="" id="nav-content">
   <nav class="navbar col-12">
-    <h2 style="color: #1a237e;"> Areas Administration </h2>
+    <h2 style="color: #1a237e;"> Campus and Zones Administration </h2>
   </nav>
   <div id="divider2"></div>
   <section id="information">
@@ -8,50 +8,92 @@
     <p class="text-justify">  </p>
   </section>
   <div class="container">
-    <!--<div class="row justify-content-center" >
-      <h4 style="color: #28C081;" class="text-center">For registrate a area an option, clicking a button.</h4>
+    <div class="row justify-content-center" >
+      <h4 style="color: #28C081;" class="text-center">To register a campus or zone, clicking a button.</h4>
       <div class="col-lg-8 col-md-8 col-sm-12">
         <div class="row">
           <div class="col-6 d-flex justify-content-center">
-            <button type="button" class=" col-12 btn btn-cyan" (click)="campusForm()">Area Form</button>     
+            <button type="button" class=" col-12 btn btn-cyan" (click)="campusForm()">Campus Form</button>     
           </div>
           <div class="col-6 d-flex justify-content-center">
             <button type="button" class="col-12 btn btn-light-green" (click)="zoneForm()">Zone Form</button>        
           </div>
         </div>       
       </div>
-    </div>-->  
+    </div>
   </div>
+  <!-- Central Modal Medium Success -->
+  <div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-notify modal-success" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading lead"> Success message</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+        <!--Body-->
+        <div class="modal-body">
+          <div class="text-center">
+            <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+            <p>The register has been saved successfully.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Central Modal Medium Success-->
+
+  <!-- Central Modal Medium Danger -->
+  <div class="modal fade" id="centralModalDanger" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"  *ngIf="!addressProvided">
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading lead">Modal Danger</p>  
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+        <!--Body-->
+        <div class="modal-body">
+          <div class="text-center">
+            <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iusto nulla aperiam blanditiis ad consequatur in dolores culpa, dignissimos, eius non possimus fugiat. Esse ratione fuga, enim,
+            ab officiis totam.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Central Modal Medium Danger-->
+
   <div class="container" id="formCampus" *ngIf="selectCampus" >
     <div class="row justify-content-center"> <!-- para centrar el contenedor (el div)-->
       <div class="col-lg-8 col-md-8 col-sm-12">
         <div class="row justify-content-center" *ngIf="drawWarningMessage" >
           <h4 style="color: red;" class="text-center">{{ drawWarningMessage }}</h4>
         </div>
-        <!--<div class="alert alert-warning alert-dismissible fade show" role="alert">
-          <strong>Campus saved successfully!</strong> The information has been saved.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>-->
         <div class="card">
           <div class="card-header text-center font-weight-bold text-primary"> 
-            <h3 id="titulo-form" class="text-success"> Area Form Data</h3>
+            <h3 id="titulo-form" class="text-success"> Campus Form Data</h3>
           </div>
           <div class="card-body">    
             <form (ngSubmit)="registerCampus()">  
               <div class="form-group">
                 <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
-                <label for="InputCampusName">Area Name</label>
+                <label for="InputCampusName">Campus Name</label>
                 <input type="text" class="form-control" id="InputCampusName" placeholder="Insert a campus name" required [(ngModel)]="campus.name" name="name">
               </div>
-              <!--<div class="form-group">
+              <div class="form-group">
                 <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                 <label for="InputAddressCampus">Adress's Campus</label>
                 <input type="text" class="form-control" id="InputAddressCampus" placeholder="Insert the address of the campus" required [(ngModel)]="campus.address" name="address">
-              </div>-->
+              </div>
               <div class="form-group text-center font-weight-bold text-primary"> 
-                <h3 id="titulo-form" class="text-success"> Delimite Area</h3>
+                <h3 id="titulo-form" class="text-success"> Delimite Campus</h3>
               </div>
               <div class="form-group row justify-content-center">
                 <div class="col-6">
@@ -61,16 +103,19 @@
                   <button type="button" class="btn btn-warning col-lg-12 col-12" (click)="endDraw()"> End draw </button>                    
                 </div> 
               </div>
-              <button type="submit" class="btn btn-info col-lg-12 col-12"> Save Information </button>      
+              <button type="submit" class="btn btn-info col-lg-12 col-12"> Save Information </button>
             </form>
           </div>
         </div>      
       </div>
     </div>
   </div>
-  <!--<div class="container" id="formZone" *ngIf="selectZone" >
-    <div class="row justify-content-center"> para centrar el contenedor (el div)
+  <div class="container" id="formZone" *ngIf="selectZone">
+    <div class="row justify-content-center"> <!--para centrar el contenedor (el div)-->
       <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="row justify-content-center" *ngIf="drawWarningMessage" >
+          <h4 style="color: red;" class="text-center">{{ drawWarningMessage }}</h4>
+        </div>
         <div class="card">
           <div class="card-header text-center font-weight-bold text-primary"> 
             <h3 id="titulo-form" class="text-success"> Zone Form Data</h3>
@@ -80,15 +125,15 @@
               <div class="form-group">
                 <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
                 <label for="InputCampusList">Campus Name</label>
-                <select id="InputCampusList" class="form-control">
-                  <option selected value="" disabled>Select a campus name</option>
-                  <option value="Palmira">Palmira</option>
-                </select> 
+                <select id="InputCampusList" class="form-control" [(ngModel)]="selectedCampus" name="selectedCampus">       
+                  <option selected value="null" disabled>Select a campus name</option>
+                  <option *ngFor="let item of listCampus" [ngValue]="item._id"> {{item.name}} </option>
+                </select>
               </div>
               <div class="form-group">
                 <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
                 <label for="InputZoneName">Zone Name</label>
-                <input type="text" class="form-control" id="InputZoneName" placeholder="Insert the zone name" required >
+                <input type="text" class="form-control" id="InputZoneName" placeholder="Insert the zone name" [(ngModel)]="zone.name" name="name" required >
               </div> 
               <div class="form-group text-center font-weight-bold text-primary"> 
                 <h3 id="titulo-form" class="text-success"> Delimite Zone</h3>
@@ -107,99 +152,10 @@
         </div>      
       </div>
     </div>
-  </div>-->
+  </div>
   <nav class="d-flex justify-content-center">
-    <h2 style="color: #1a237e;">Institution Map</h2>
-  </nav>
-  <!--<div class="container">
-    <div class="row justify-content-center" >
-      <div class="col-lg-8 col-md-8 col-sm-12">
-        <h4 style="color: #28C081;" class="text-center">For a delimite a campus or zone, select an option, clicking a button.</h4>
-        <div class="row">
-          <div class="col-6 d-flex justify-content-center">
-            <button type="button" class=" col-12 btn btn-cyan" (click)="campusFormMap()">Delimite a campus map</button>     
-          </div>
-          <div class="col-6 d-flex justify-content-center">
-            <button type="button" class="col-12 btn btn-light-green" (click)="zoneFormMap()">Delimite a zone map of a campus</button>        
-          </div>
-        </div>       
-      </div>
-    </div>      
-  </div>-->
-  <!--<div class="container" id="formCampusMap" *ngIf="selectCampusMap" >
-    <div class="row justify-content-center">para centrar el contenedor (el div)
-      <div class="col-lg-8 col-md-8 col-sm-12">
-        <div class="card">
-          <div class="card-header text-center font-weight-bold text-primary"> 
-            <h3 id="titulo-form" class="text-success"> Delimite a Campus</h3>
-          </div>
-          <div class="card-body">    
-            <form>  
-              <div class="form-group">
-                <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
-                <label for="InputCampusList">Select a Campus Name</label>
-                <select id="InputCampusList" class="form-control">
-                  <option selected value="" disabled>Select a campus name</option>
-                  <option value="Palmira">Palmira</option>
-                </select> 
-              </div>
-              <div class="form-group row justify-content-center">
-                <div class="col-6">
-                  <button type="button" class="btn btn-secondary col-lg-12 col-12" (click)="startDrawCampus()"> Start draw </button>
-                </div>
-                <div class="col-6">
-                  <button type="button" class="btn btn-warning col-lg-12 col-12" (click)="endDrawCampus()"> End draw </button>                    
-                </div> 
-              </div>
-            </form>
-          </div>
-        </div>      
-      </div>
-    </div>
-  </div>-->
-  <!--<div class="container" id="formZoneMap" *ngIf="selectZoneMap" >
-    <div class="row justify-content-center"> para centrar el contenedor (el div)
-      <div class="col-lg-8 col-md-8 col-sm-12">
-        <div class="card">
-          <div class="card-header text-center font-weight-bold text-primary"> 
-            <h3 id="titulo-form" class="text-success"> Zone Form Data</h3>
-          </div>
-          <div class="card-body">    
-            <form>  
-              <div class="form-group">
-                <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
-                <label for="InputCampusList">Campus Name</label>
-                <select id="InputCampusList" class="form-control">
-                  <option selected value="" disabled>Select a campus name</option>
-                  <option value="Palmira">Palmira</option>
-                </select> 
-              </div>
-              <div class="form-group">
-                <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
-                <label for="InputZoneList">Zone Name</label>
-                <select id="InputZoneList" class="form-control">
-                  <option selected value="" disabled>Select a zone name</option>
-                  <option value="Computacion">Electrónica</option>
-                  <!--<option value="Administracion">Administración</option>
-                  <option value="Electronica">Electrónica</option>
-                  <option value="Cafeteria">Cafeteria</option>
-                  <option value="Auditorio">Auditorio</option>
-                </select> 
-              </div>
-              <div class="form-group row justify-content-center">
-                <div class="col-6">
-                  <button type="button" class="btn btn-secondary col-lg-12 col-12" (click)="startDrawCampus()"> Start draw </button>
-                </div>
-                <div class="col-6">
-                  <button type="button" class="btn btn-warning col-lg-12 col-12" (click)="endDrawCampus()"> End draw </button>                    
-                </div> 
-              </div>      
-            </form>
-          </div>
-        </div>      
-      </div>
-    </div>
-  </div>-->
+    <h2 style="color: #1a237e;">Map for delimite campus or zone</h2>
+  </nav>  
   <div  class="container col-12 justify-content-center" id="map" *ngIf="draw"
     leaflet
     leafletDraw
@@ -207,10 +163,55 @@
     [leafletDrawOptions]="drawOptions"
     (leafletMapReady)="onMapReady($event)">
   </div>
-  <!--<nav class="navbar col-12" id="header-results">
-    <h2 style="color: #1a237e;"> Relation Campus-Zone Institution</h2>
-  </nav>-->
-  <!--<section id="results">
+  <nav class="navbar col-12" id="header-results">
+    <h2 style="color: #1a237e;"> Devices inside in Area. </h2>
+  </nav>
+  <div class="container" id="formZone">
+    <div class="row justify-content-center"> <!--para centrar el contenedor (el div)-->
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <div class="card">
+          <div class="card-header text-center font-weight-bold text-primary"> 
+            <h3 id="titulo-form" class="text-success"> Consult Form  </h3>
+          </div>
+          <div class="card-body">    
+            <form>
+              <div class="form-group">
+                <label for="InputCampusList"> Select an option </label>
+                <select id="InputCampusList" class="form-control" [(ngModel)]="selectedOption" name="selectedOption">       
+                    <option selected value="" disabled> Select and option </option>
+                  <option value='campus'> Campus </option>
+                  <option value='zone'> Zone </option>
+                </select>
+              </div>
+              <div class="form-group" *ngIf="selectedOption==='campus'">
+                <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
+                <label for="InputCampusList">Campus Name</label>
+                <select id="InputCampusList" class="form-control" [(ngModel)]="campusQuery" name="campusQuery">       
+                  <option selected value="" disabled>Select a campus name</option>
+                  <option *ngFor="let item of listCampus" [ngValue]="item._id"> {{item.name}} </option>
+                </select>
+              </div>
+              <div class="form-group" *ngIf="selectedOption==='zone'">
+                <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                <label for="InputZoneName">Zone Name</label>
+                <select id="InputCampusList" class="form-control" [(ngModel)]="zoneQuery" name="zoneQuery">       
+                  <option selected value="" disabled>Select a zone name</option>
+                  <option *ngFor="let item of listZones" [ngValue]="item._id"> {{item.name}} </option>
+                </select>
+              </div> 
+              <button type="button" class="btn btn-info col-lg-12 col-12" (click)="queryContext()"> Consult Information</button>      
+            </form>
+          </div>
+        </div>      
+      </div>
+    </div>
+  </div>
+  <div  class="container col-12 justify-content-center" id="map" *ngIf="showMapDevices"
+    leaflet
+    [leafletOptions]="options"
+    [leafletLayers]="layers">
+  </div>
+  <section id="results">
     <table class="table table-striped table-bordered table-responsive text-center"> 
       <thead class="thead-inverse">
         <tr>
@@ -221,53 +222,16 @@
           <th class="text-center">Delete</th>
         </tr>
       </thead>
-      <tbody>-->
-          <!--<tr>
-            <th scope="row" class="text-center">1</th>
-            <td>Palmira</td>
-            <td>Computacion</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>            
-            <td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-          </tr>
-          <tr>
-            <th scope="row" class="text-center">2</th>
-            <td>Palmira</td>
-            <td>Administracion</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-            <td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-          </tr>-->
-          <!--<tr>
-            <th scope="row" class="text-center">1</th>
-            <td>Palmira</td>
-            <td>Electrónica</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-          </tr>-->
-          <!--<tr>
-            <th scope="row" class="text-center">4</th>
-            <td>Palmira</td>
-            <td>Cafeteria</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-            <td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-          </tr>-->
-    <!--</tbody>
-    </table>-->
-  <!--</section>-->
-  <!--<div class="container" style="margin-top: 30px;">    
-    <div class="row">
-      <div class="col-sm-12">
-        <div leaflet style="height: 500px;"
-          leafletDraw
-          [leafletOptions]="options"
-          [leafletDrawOptions]="drawOptions">
-        </div>
-      </div>
-    </div>
-  </div>-->
+      <tbody>
+        <tr>
+          <th scope="row" class="text-center">1</th>
+          <td>Palmira</td>
+          <td>Electrónica</td>
+          <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
+          <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
 </div>   

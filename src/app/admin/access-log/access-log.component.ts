@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
-import 'leaflet/dist/images/marker-shadow.png';
-import 'leaflet/dist/images/marker-icon.png';
+//import 'leaflet/dist/images/marker-shadow.png';
+//import 'leaflet/dist/images/marker-icon.png';
+//import * from '../../../assets/js/Control.Geocoder.js'
 
 
 @Component({

@@ -1,123 +1,22 @@
 <div class="" id="nav-content">
   <nav class="navbar col-12">
-    <h2 style="color: #1a237e;"> Users Register </h2>
-  </nav>
-  <div id="divider2"></div>
-  <section id="information">
-    <p class="text-justify"> As a Administrator, you can create, edit, update and delete users groups. The users created will can access to the application according to the role provided. </p>
-    <p class="text-justify">  </p>
-  </section>
-  <div class="container" id="formUsersRegister">
-    <div class="row justify-content-center"> <!-- para centrar el contenedor (el div)-->
-      <div class="col-lg-8 col-md-8 col-sm-12">
-        <div class="card">
-          <div class="card-header text-center font-weight-bold text-primary"> 
-            <h3 id="titulo-form" class="text-success">  Users Form Data</h3>
-          </div>
-          <div class="card-body">    
-            <form (ngSubmit)="registerData()">  
-              <div class="form-group row"> 
-                <div class="col-2 d-flex justify-content-center">
-                  <i class="fa fa-user fa-2x" aria-hidden="true"></i>
-                </div>
-                <div class="col">
-                  <input type="text" class="form-control" id="InputName" placeholder="First name" [(ngModel)]="object.name" name="objectname">
-                </div> 
-                <div class="col">
-                  <input type="text" class="form-control" id="InputLastName" placeholder="Last name" [(ngModel)]="object.lastname" name="lastname">
-                </div> 
-              </div>
-              <div class="form-group row">
-                <div class="col-2 d-flex justify-content-center">
-                  <i class="fa fa-envelope fa-2x" aria-hidden="true"></i>
-                </div> 
-                <div class="col-10">
-                  <input type="text" class="form-control" id="InputEmail" placeholder="example@domain.com" [(ngModel)]="object.email" name="email">  
-                </div>                                 
-              </div>
-              <div class="form-group row">
-                <div class="col-2 d-flex justify-content-center">
-                  <i class="fa fa-users fa-2x" aria-hidden="true"></i>
-                </div>
-                <div class="col-10">
-                  <!--Here it could be ingresed database options of roles-->
-                  <select id="InputRole" class="form-control" [(ngModel)]="role" name="role">
-                  <option value="null" selected disabled>Choose a User Role</option>
-                  <option value="user">User</option>
-                  <option value="security_guard">Security Guard</option>
-                  </select>  
-                </div>
-              </div>
-              <div class="row justify-content-center">   
-                <div class="col-4">
-                  <button type="submit" class="col-12 btn btn-success"> Add</button>
-                </div>  
-                <div class="col-4">
-                  <button type="button" class="col-12 btn btn-info">Search </button>
-                </div>
-                <div class="col-4">
-                  <button type="button" class="col-12 btn btn-warning" (click)="clearInputs()"> Clear </button>
-                </div>      
-              </div>  
-            </form>
-          </div>
-        </div>      
-      </div>
+    <h2 style="color: #1a237e;"> Final Users Administration </h2>
+  </nav>                  
+  <nav class="navbar navbar-expand-lg navbar-light blue-grey lighten-5">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/users-register/users-form-data"> Users Register </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/admin/users-register/users-list"> Users List</a>
+        </li>
+      </ul>
     </div>
-  </div>
-  <nav class="navbar col-12">
-      <h2 style="color: #1a237e;"> User Registers List</h2>
   </nav>
-  <section id="results">
-    <table class="table table-striped table-bordered table-responsive text-center"> 
-      <thead class="thead-inverse">
-        <tr>
-          <th class="text-center">IDUser</th>
-          <th class="text-center">Name</th>
-          <th class="text-center">Last Name</th>
-          <th class="text-center">Username</th>
-          <th class="text-center">Email</th>
-          <th class="text-center">Role</th>
-          <th class="text-center">Edit</th>
-          <th class="text-center">Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr>
-            <th scope="row" class="text-center">13680275</th>
-            <td>Jorge</td>
-            <td>Palacios</td>
-            <td>13680275</td>
-            <td>jorge.palacios@hotmail.com</td>
-            <td>SG</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-          </tr>
-          <!--<tr>
-            <th scope="row" class="text-center">2</th>
-            <td>Roberto</td>
-            <td>Jimenez</td>
-            <td></td>
-            <td>roberto.jimenez@hotmail.com</td>
-            <td>SG</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-            <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-          </tr>
-          <tr>
-            <th scope="row" class="text-center">3</th>
-            <td>Diana</td>
-            <td>González</td>
-            <td></td>
-            <td>diana.gonzales@hotmail.com</td>
-            <td>U</td>
-            <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-            <!--<td><a class="btn-floating btn-sm green"><i class="fa fa-pencil text-white"></i></a></td>
-            <td><a class="btn-floating btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
-          </tr>-->
-      </tbody>
-    </table>
-  </section>
+  <router-outlet></router-outlet> 
 </div>   

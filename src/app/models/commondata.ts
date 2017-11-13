@@ -1,10 +1,13 @@
 export class CommonData{
-    firstName: string;
+    
+    idUser : string
+    name: string;
     lastName: string;
     email: string;
 
-    constructor(firstName: string, lastName:string, email: string){
-        this.firstName = firstName;
+    constructor(id: string, firstName: string, lastName:string, email: string){
+        this.idUser = id;
+        this.name = firstName;
         this.lastName = lastName;
         this.email = email;
     }
