@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { MenuComponent } from './admin/menu/menu.component';
 import { AdminRoutingModule} from './admin/admin-routing.module';
+import { AuthService } from 'app/services/auth.service';
 //Rutas globales de la aplicación 
 const appRoutes: Routes = [
   { path: '', redirectTo:'login', pathMatch:'full'},
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     /*AuthGuardAdmin,
     AuthGuardUsuario,
     LoginActivate*/
+    AuthService
   ]
 })
 export class AppRoutingModule {}

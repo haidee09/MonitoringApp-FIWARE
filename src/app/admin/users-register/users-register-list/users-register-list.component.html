@@ -9,7 +9,7 @@
         <th class="text-center">Name</th>
         <th class="text-center">Last Name</th>
         <th class="text-center">Email</th>
-        <th class="text-center">Role</th>
+        <th class="text-center">Status</th>
         <th class="text-center">View Info</th>
         <th class="text-center">Edit</th>
         <th class="text-center">Delete</th>
@@ -17,14 +17,14 @@
     </thead>
     <tbody>
       <tr *ngFor="let item of collectionUsers">
-        <td>{{item.idUser}}</td>
+        <td>{{item.id}}</td>
         <td>{{item.name}}</td>
         <td>{{item.lastName}}</td>
         <td>{{item.email}}</td>
-        <td>{{item.role}}</td>
+        <td>{{item.status}}</td>
         <td><a class="btn btn-primary btn-sm blue" ><i class="fa fa-eye text-white" aria-hidden="true"></i></a></td>
         <td><a class="btn btn-success btn-sm green"><i class="fa fa-pencil text-white" aria-hidden="true"></i></a></td>
-        <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
+        <td><a class="btn btn-danger btn-sm red" (click)="deleteUser(item.idUser)"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
       </tr>
     </tbody>
   </table>

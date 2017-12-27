@@ -36,13 +36,12 @@
 #sidebar{
     background-color: rgb(127, 207, 230);
     padding: 0;
-    height: auto;
 }
 #nav-sidebar{
     padding: 0 1em 0 1em;
 }
 .navbar-nav .nav-link{
-    padding-right: 0;
+   /* padding-right: 0;*/
     padding-left: 0;
     color: #030518;
 }
@@ -53,12 +52,23 @@ li a.active-link:link, li a.active-link:visited{
     font-weight: bold;
     padding-left: 5%;
 }
+li a.active-link-notifications:link, li a.active-link-notifications:visited{
+    color: #040e58;
+    background-color: rgb(181, 227, 240); 
+    border-radius: 3px; 
+    font-weight: bold;
+    padding-left: 1em;
+    padding-right: 1em;
+}
 .fa-2x{
     padding-right: .1em;
 }
 #navbarDropdownMenuLink{
    padding-left: 8%;
 }
+#navbarDropdownMenuLinkCampus{
+    padding-left: 8%;
+ }
 #navbarNavDropdown .navbar-nav{
     margin: 0 0 .5em 0;
 }

@@ -1,0 +1,34 @@
+<div class="row container justify-content-center col-12" id="encabezado">
+  <h4 style="color: #1a237e;"> Alerts List</h4>
+</div>
+<section id="results">
+  <table class="table table-striped table-bordered table-responsive text-center"> 
+    <thead class="thead-inverse">
+      <tr>
+        <th class="text-center">AlertID</th>
+        <th class="text-center">Category</th>
+        <th class="text-center">Subcategory</th>
+        <th class="text-center">Description</th>
+        <!--<th class="text-center">Location</th>-->
+        <th class="text-center">Severity</th>
+        <!--<th class="text-center">View Info</th>
+        <th class="text-center">Edit</th>-->
+        <th class="text-center">Delete</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr *ngFor="let item of alertsDB | paginate: { itemsPerPage: 5, currentPage: p }">
+          <td>{{item.id}}</td>
+          <td>{{item.category}}</td>
+          <td>{{item.subCategory}}</td>
+          <td>{{item.description}}</td>
+          <!--<td>{{item.location}}</td>-->
+          <td>{{item.severity}}</td>
+          <!--<td><a class="btn btn-primary btn-sm blue" ><i class="fa fa-eye text-white" aria-hidden="true"></i></a></td>
+          <td><a class="btn btn-success btn-sm green"><i class="fa fa-pencil text-white" aria-hidden="true"></i></a></td>-->
+          <td><a class="btn btn-danger btn-sm red" (click)="deleteAlert(item.id)"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="p = $event" previousLabel="Previous" nextLabel="Next" class="d-flex justify-content-center"></pagination-controls>
+ </section>

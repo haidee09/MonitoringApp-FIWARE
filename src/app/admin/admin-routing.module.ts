@@ -8,12 +8,14 @@ import { AccessLogComponent } from './access-log/access-log.component';
 import { CampusZonesMapComponent } from './campus-zones-map/campus-zones-map.component';
 import { MenuComponent } from './menu/menu.component';
 import { AlertsComponent } from './alerts/alerts.component';
+import { AlertsRoutingModule, routableComponentsAlerts, routesAlerts } from './alerts/alerts-routing.module';
 import { UsersRegisterRoutingModule, routesUsersRegister, routableComponentsUsers } from './users-register/users-register-routing.module';
-
+import { SecurityGuardsRoutingModule, routableComponentsSG, routesSecurityGuards} from './security-guards/security-guards-routing.module';
+import { CampusZonesMapRoutingModule, routableComponentsCampusZones, routesCampusZones} from './campus-zones-map/campus-zones-map-routing.module';
 
 //RUtas del modulo Administrador
 export const routes: Routes = [  
-  { path: 'admin', redirectTo:'admin/profile-setting'},
+  { path: 'admin', redirectTo:'admin/dashboard'},
   { path: 'admin', component:MenuComponent,
     children:[
       {path:'dashboard', component: DashboardComponent},
@@ -21,10 +23,14 @@ export const routes: Routes = [
       {path:'users-register', redirectTo:'users-register/users-form-data'},
       {path:'users-register', component: UsersRegisterComponent, children: routesUsersRegister},
       //{path:'users-register', children: routesUsersRegister},
-      {path:'security-guards', component: SecurityGuardsComponent},
-      {path:'campus-zones', component:CampusZonesMapComponent},
-      {path:'access-log', component:AccessLogComponent},
-      {path:'alerts', component:AlertsComponent}
+      {path:'security-guards', redirectTo:'security-guards/sg-form-data'},
+      {path:'security-guards', component: SecurityGuardsComponent, children: routesSecurityGuards},
+      {path:'campus-zones', redirectTo:'campus-zones/campus-form'},
+      {path:'campus-zones', component: CampusZonesMapComponent, children: routesCampusZones},
+      {path: 'alerts', redirectTo: 'alerts/alerts-map'},
+      {path: 'alerts', component: AlertsComponent, children: routesAlerts} ,
+      {path: 'user-devices', component:AccessLogComponent}
+      //{path:'alerts', component:AlertsComponent}
     ]
   },  
   //{ path: '**', redirectTo: '', pathMatch: 'full' }
@@ -34,11 +40,11 @@ export const routableComponents = [
   DashboardComponent,
   ProfileSettingComponent,
   //UsersRegisterComponent,
-  SecurityGuardsComponent,
+  //SecurityGuardsComponent,
   AccessLogComponent,
-  CampusZonesMapComponent,
+  //CampusZonesMapComponent,
   MenuComponent,
-  AlertsComponent
+  //AlertsComponent
 ];
 
 @NgModule({

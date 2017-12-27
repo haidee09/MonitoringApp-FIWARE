@@ -26,7 +26,7 @@ export class CampusService {
     //URL MODIFICAR
     return this.http.post(`${this.service_url}/campus`, body, options) // ...using post request
     .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    .catch((error:any) => Observable.throw(error.json().errors || 'Server error')); //...errors if any
   }
   
   readCampus(idCampus: String): Observable<Campus> {    
@@ -35,7 +35,7 @@ export class CampusService {
     //URL MODIFICAR
     return this.http.get(`${this.service_url}/campus/${idCampus}`, options) // ...using post request
     .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    .catch((error:any) => Observable.throw(error.json().errors || 'Server error')); //...errors if any
   }
 
   listCampus(): Observable<Campus[]> {
@@ -45,16 +45,24 @@ export class CampusService {
     //URL MODIFICAR
     return this.http.get(`${this.service_url}/campus`, options) // ...using post request
     .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    .catch((error:any) => Observable.throw(error.json().errors || 'Server error')); //...errors if any
   }
 
-  queryContext(idCampus: String): Observable<Object> {
+  queryContextDevices(idCampus: String): Observable<Object[]> {
     let headers = new Headers({ 'Accept': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     //URL MODIFICAR
-    return this.http.get(`${this.service_url}/devices/${idCampus}`, options) // ...using post request
+    return this.http.get(`${this.service_url}/devicesCampus/${idCampus}`, options) // ...using post request
     .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    .catch((error:any) => Observable.throw(error.json().errors || 'Server error')); //...errors if any
+  }
+  queryContextAlerts(idCampus: String): Observable<Object[]> {
+    let headers = new Headers({ 'Accept': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    //URL MODIFICAR
+    return this.http.get(`${this.service_url}/alertsCampus/${idCampus}`, options) // ...using post request
+    .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+    .catch((error:any) => Observable.throw(error.json().errors || 'Server error')); //...errors if any
   }
 
 }

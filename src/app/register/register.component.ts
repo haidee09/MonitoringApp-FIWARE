@@ -5,6 +5,8 @@ import { Admin } from '../models/administrator';
 import { Company } from '../models/company';
 import { AdminService} from '../services/admin.service';
 import { CompanyService} from '../services/company.service';
+import { AlertService } from '../services/alert.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -20,42 +22,56 @@ export class RegisterComponent{
   messageAdmin: string = '';
   messageCompany: string = '';
   messagepwd: string = '';
-  /*adminExist: boolean = false;
-  companyExist: boolean = false;
-  successAdmin = null;
-  successCompany = null; */
-  //successRegistration = null;
-
-  constructor(private adminService: AdminService, private companyService: CompanyService, private router: Router) { 
+  alerts = [];
+  connection: any;
+ 
+  constructor(
+    private adminService: AdminService, 
+    private companyService: CompanyService, 
+    private router: Router, 
+    private alertService:AlertService,
+    private toastr: ToastrService
+  ) { 
     this.admin = new Admin('','','','','', '', new Date(), new Date());
     this.company = new Company('','',new Date(), new Date());
     //this.admin = new Admin;
     //this.company = new Company;
   }
 
-  /*onChange(newValue) {
-    console.log(newValue);
-    this.company.idCompany = newValue;  // don't forget to update the model here;
-    //this.admin.refCompany = newValue;
-    // ... do other stuff here ...
-  }*/
-
+  ngOnInit() {
+    this.connection = this.alertService.getMessages().subscribe(newAlert => {
+      console.log(newAlert);
+    })
+  }
+  clearInputs(){
+    this.admin.id= '';
+    this.admin.name = '';
+    this.admin.lastName = '';
+    this.admin.refCompany= '';
+    this.admin.email = '';
+    this.admin.password = '';
+    this.password2 = '';
+    this.company.name = '';
+  }
   newRegister(){
     if(this.checkPasswordMatches()){
-      this.readAdmin();
-      this.readCompany();
-      if(this.messageAdmin===''){
+      /*this.readAdmin();
+      this.readCompany();*/
+      this.registerAdmin();      
+      this.registerCompany(); 
+      this.clearInputs(); 
+      /*if(this.messageAdmin===''){
         this.registerAdmin();      
       }
       if(this.messageCompany==='')
       {
         this.registerCompany();   
-      }        
+      } */       
     }   
     else{
       this.messagepwd = "The passwords not matches";
-      //this.successRegistration = false;
       console.log(this.messagepwd);
+      this.toastr.warning('', this.messagepwd, { positionClass: 'toast-top-full-width' })
     }
   }
   checkPasswordMatches(){
@@ -66,17 +82,13 @@ export class RegisterComponent{
   }
   readAdmin(){
     //let adminExist = this.adminExist
-    this.adminService.readAdmin(this.admin.idAdministrator).subscribe(
+    this.adminService.readAdmin(this.admin.id).subscribe(
       (res) => {
         //adminExist = true
         if(res==null){
           //console.log(res);
         }
         else{
-          /*if(res['email'] == this.admin.email ) {
-            this.message = this.message+"The email is already registreted";
-            console.log(this.message);
-          } */
           this.messageAdmin = "Admin ID already existis";
           //this.adminExist= true;
           console.log(this.messageAdmin);
@@ -93,18 +105,10 @@ export class RegisterComponent{
     //let companyExist = this.companyExist
     this.companyService.readCompany(this.admin.refCompany).subscribe(
       (res) => {
-        /*if(res['success'] == true ) {
-          this.message = res['message'];
-          console.log(this.message);
-          //this.router.navigate(['']);
-        } */
-        //companyExist = true
         if(res==null){
           //console.log(res);
         }
         else{
-          //his.companyExist = true
-          //console.log(this.companyExist)
           this.messageCompany =" Company ID already existis";        
           console.log(this.messageCompany);
         }        
@@ -117,53 +121,40 @@ export class RegisterComponent{
   }
 
   registerAdmin() {
-      this.company.idCompany = this.admin.refCompany;
-      this.adminService.createAdmin(this.admin).subscribe(
-        (res) => {
-          /*if(res['success'] == true ) {
-            this.message = res['message'];
-            console.log(this.message);
-            //this.router.navigate(['']);
-          } */
-          if(res==null){
-          // console.log(res);
-          }
-          else{
-              this.messageAdmin = "New User Admin Created"
-              console.log(this.messageAdmin);
-          } 
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    }
+    this.company.id = this.admin.refCompany;
+    this.adminService.createAdmin(this.admin).subscribe(
+      (res) => {
+        console.log(res);
+        this.toastr.success('','Admin successfully registered', { positionClass: 'toast-top-full-width' });
+        console.log("Admin registrado con exito");
+        this.messageAdmin = "New User Admin Created"
+        console.log(this.messageAdmin); 
+      },
+      (error) => {
+        console.log(error);
+        console.log("Hubo un error al guardar los datos del administrador");
+        this.toastr.error('', `An error has occurred to save the administrator data: ${error.message}`, { positionClass: 'toast-top-full-width' })
+      }
+    );
+  }
   
   registerCompany() {
     this.companyService.createCompany(this.company).subscribe(
       (res) => {
-        /*if( res['success'] == true ) {
-          this.message = res['message'];
-          //this.router.navigate(['']);
-        } 
-        else {
-          this.message = res['message'];
-        }*/
-        if(res==null){
-          //console.log(res);
-        }
-        else{
-          
-            this.messageCompany = "New company created"
-            console.log(this.messageCompany);
-          //console.log(this.successCompany)
-          //this.message = this.message+" Company ID already existis";        
-          //console.log(this.message);
-        } 
+        console.log(res);
+        this.toastr.success('','Company successfully registered', { positionClass: 'toast-top-full-width' });
+        console.log("Company registrado con exito");
+        this.messageCompany = "New company created"
+        console.log(this.messageCompany); 
       },
       (error) => {
         console.log(error);
+        console.log("Hubo un error al guardar los datos de la compañia");
+        this.toastr.error('', `An error has occurred to save the company data: ${error.message}`, { positionClass: 'toast-top-full-width' })
       }
     )
+  }
+  ngOnDestroy() {
+    this.connection.unsubscribe();
   }
 }

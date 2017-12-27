@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonData } from '../../../models/commondata';
 import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
+//import { Subscription } from 'rxjs/Subscription';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 import { User } from '../../../models/user';
 
 @Component({
@@ -15,50 +15,38 @@ import { User } from '../../../models/user';
 })
 export class UsersRegisterFormComponent{
 
-  //firstname:any;
-  //lastname:any;
-  //email:any;
   role:any = null;
   object: CommonData;
-  subscription: Subscription;
+  //subscription: Subscription;
   collectionUsers: User[];
 
-  constructor(private route: Router, private userService: UserService){
-    this.object = new CommonData('','','','');
-    
-  }
-  
-  /*listSG(){
-    this.sgService.listSG().subscribe(
-      (res) => {
-        this.collectionSG = res;
-        console.log(this.collectionUsers);
-      },
-      (error)=> {
-        console.log(error);
-      }
-    )
-  }*/
+  constructor( private userService: UserService,  private toastr: ToastrService){
+    this.object = new CommonData('','','','','');
+  }  
   clearInputs(){
-    this.object.idUser = '';
+    this.object.id= '';
     this.object.name = '';
     this.object.lastName = '';
     this.object.email = '';
+    this.object.password = "";
     this.role = null;
   }
   registerUser(){
-    this.subscription = this.userService.createUser(this.object).subscribe(
+    this.userService.createUser(this.object).subscribe(
       (res) => {
         console.log(res);
         this.clearInputs();
+        this.toastr.success('','User successfully registered', { positionClass: 'toast-bottom-full-width' });
         console.log("Usuario registrado con exito");
       },
       (error) => {
-        console.log("Hubo un error al guardar los datos del guardia de seguridad");
+        console.log(error);
+        console.log("Hubo un error al guardar los datos del usuario");
+        this.toastr.error('', 'An error has occurred to save the user data', { positionClass: 'toast-bottom-full-width' })
       }
     )
   }
-  /*ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }*/
+  ngOnDestroy() {
+    //this.subscription.unsubscribe();
+  }
 }

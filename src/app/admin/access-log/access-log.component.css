@@ -10,7 +10,34 @@
 #page-container{
     margin-top: 2em;
 }
-               
+#searchFilterContainer{
+    margin-bottom: 5%;
+}
+.searchFilters{
+    color: #1a237e;
+}
+#sideSearch{
+    margin-bottom: 3em;
+}
+.categoriesSearch{
+    color: #088A08;
+    font-family: 'Cabin', sans-serif;
+    font-weight: bolder;
+}
+.selectCampus{
+    color: #0B2161;
+    font-family: 'Cabin', sans-serif;
+    font-weight: bolder;
+}
+.selectZone{
+    color: #0B2161;
+    font-family: 'Cabin', sans-serif;
+    font-weight: bolder;
+}
+  
+#list2{
+    margin-top: 5%;
+}      
 .active-pink-2 input[type=text]:focus:not([readonly]) {
     border-bottom: 1px solid #f48fb1;
     box-shadow: 0 1px 0 0 #f48fb1;

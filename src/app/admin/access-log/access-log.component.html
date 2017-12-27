@@ -1,33 +1,59 @@
 <div class="" id="nav-content">
     <nav class="navbar col-12">
-      <h2 style="color: rgb(26, 35, 126);"> Users Access Log </h2>
+      <h2 style="color: rgb(26, 35, 126);"> User Devices History</h2>
     </nav>
     <div id="divider2"></div>
     <section class="container" id="page-container">
       <div class="row">
-        <div class="col-3"> 
-          <h4 style="color: #1a237e;">Search Filters</h4>                           
-          <!-- Search form -->
-          <form class="form-inline md-form form-sm active-pink active-pink-2">
+        <div class="col-3" id="sideSearch"> 
+          <div class="card container hoverable" id="searchFilterContainer">
+            <div class="card-header" id="headingPrincipal">
+              <a class="text-center" disabled>
+                <h4 class="mb-0 categoriesSearch">
+                  Search Filters
+                </h4>
+              </a>
+            </div>                       
+            <!-- Search form -->
+            <form class="form-inline md-form form-sm active-pink active-pink-2">
               <i class="fa fa-search" aria-hidden="true"></i>
-              <input class="form-control w-75 ml-3" type="text" placeholder="Phone number" aria-label="Search">
-          </form>
-          <!-- Search form -->
-          <form class="form-inline md-form form-sm active-purple active-purple-2">
+              <input class="form-control w-75 ml-3" type="text" placeholder="ID Device" aria-label="Search">
+            </form>
+            <!-- Search form -->
+            <form class="form-inline md-form form-sm active-purple active-purple-2">
               <i class="fa fa-search" aria-hidden="true"></i>
-              <input class="form-control w-75 ml-3" type="text" placeholder="Username" aria-label="Search">
-          </form>
-          <!-- Search form -->
-          <form class="form-inline md-form form-sm active-cyan active-cyan-2">
+              <input class="form-control w-75 ml-3" type="text" placeholder="Username" [(ngModel)]="owner" name="owner" aria-label="Search">
+              <!--<button type="submit" class="btn btn-info col-lg-12 col-12"> <i class="fa fa-floppy-o" aria-hidden="true"></i> Search User </button>-->
+            </form>
+            <!-- Search form -->
+            <form class="form-inline md-form form-sm active-cyan active-cyan-2">
               <i class="fa fa-search" aria-hidden="true"></i>
-              <input class="form-control w-75 ml-3" type="text" placeholder="ID" aria-label="Search">
-          </form>
-                      
-          <!--Accordion wrapper-->
-          <div class="accordion" id="accordionSearch" role="tablist" aria-multiselectable="true">
-            <!-- Accordion card -->
+              <input class="form-control w-75 ml-3" type="text" placeholder="idUser" placeholder="ID User" [(ngModel)]="idUser" name="idUser" aria-label="Search">
+            </form>
+          </div>
+          <div class="card container hoverable" id="searchCategoriesContainer">
+            <div class="card-header" id="headingPrincipal">
+              <a class="text-center" disabled>
+                <h5 class="mb-0 categoriesSearch">
+                  Categories Search
+                </h5>
+              </a>
+            </div>
+            <div class="row list-group" id="list1">
+              <h5 class="text-center selectCampus" disabled> Select a Campus </h5>
+              <a  class="list-group-item" *ngFor="let item of listCampus | async" (click)="searchZonesOfCampus(item._id,item.pointMap, item.location)">{{item.name}}</a>
+            </div>  
+          </div>
+          <!--<div class="card list-group hoverable" id="list2" *ngIf = "campusSelected && listZonesCampusSelected.length!=0">
+            <h5 class="text-center selectZone" disabled>Select a Zone</h5>
+            <a class="list-group-item" *ngFor="let item of listZonesCampusSelected" (click)="searchDevicesOnZone(item._id, item.location)"> {{item.name}} </a>
+          </div>-->
+          <div class="card list-group hoverable" id="list2" *ngIf = "campusSelected && listZonesCampusSelected.length!=0">
+            <h5 class="text-center selectZone" disabled>Select a Zone</h5>
+            <a class="list-group-item" *ngFor="let item of listZonesCampusSelected"> {{item.name}} </a>
+          </div>
+          <!--<div class="accordion" id="accordionSearch" role="tablist" aria-multiselectable="true">
             <div class="card">
-              <!-- Card header -->
               <div class="card-header" role="tab" id="headingPrincipal">
                 <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                   <h5 class="mb-0">
@@ -35,21 +61,16 @@
                   </h5>
                 </a>
               </div>
-              <!-- Card body -->
               <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingPrincipal">
                 <div class="card-body">
-                  <!--Accordion wrapper-->
                   <div class="accordion" id="accordionCampus" role="tablist" aria-multiselectable="true">
-                    <!-- Accordion card -->
                     <div class="card">
                       <div class="card-header" role="tab" id="headingCampus">
                         <a data-toggle="collapse" data-parent="#accordionCampus" href="#collapseOneA" aria-expanded="false" aria-controls="collapseOneA">
                           <h5 class="mb-0">Campus <i class="fa fa-angle-down rotate-icon"></i></h5>                        </a>
                       </div>  
                       <div id="collapseOneA" class="collapse" role="tabpanel" aria-labelledby="headingCampus">                         
-                        <!--Accordion wrapper-->
                         <div class="accordion" id="accordionCampus1" role="tablist" aria-multiselectable="true">
-                          <!-- Accordion card -->
                           <div class="card">
                             <div class="card-header" role="tab" id="headingCampusA">
                               <a data-toggle="collapse" data-parent="#accordionCampus1" href="#collapseOneA1" aria-expanded="false" aria-controls="collapseOneA1">
@@ -88,18 +109,21 @@
                 </div>                           
               </div>
           </div>     
-        </div>
+        </div>-->
         </div>
         <div class="col-9">
           <nav class="navbar col-12 justify-content-center">
             <h2 style="color: #1a237e;"> Institution Map </h2>
           </nav>
-          <div class="container col-12 justify-content-center" 
-          id="map"
-          leaflet 
-          [leafletOptions]="options"
-          (leafletMapReady)="onMapReady($event)"></div>
-          <div class="row">
+          <div class=" card hoverable container col-12 justify-content-center" id="map" leaflet *ngIf="!showMapCampus"
+            [leafletOptions]="optionsInit"
+            (leafletMapReady)="onMapReady($event)">
+          </div>
+          <div class="card hoverable container col-12 justify-content-center" id="map" leaflet *ngIf="showMapCampus"
+            [leafletOptions]="options"
+            (leafletMapReady)="onMapReady($event)" [leafletLayers]="layers">
+          </div>
+          <!--<div class="row">
               <section id="results">
                   <table class="table table-striped table-bordered table-responsive text-center"> 
                     <thead class="thead-inverse">
@@ -151,8 +175,8 @@
                         </tr>
                     </tbody>
                   </table>
-                </section>            
-          </div>
+              </section>            
+          </div>-->
         </div>
       </div>
     </section>   

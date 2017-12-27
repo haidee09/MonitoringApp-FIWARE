@@ -1,5 +1,5 @@
 <main>
-  <h1 id="titulo-form">  SIGN IN  - SmartSecurity</h1>
+  <h1 id="titulo-form">  SIGN IN  - SmartSecurity </h1>
   <div class="container">
     <div class="row justify-content-center"> <!-- para centrar el contenedor (el div)-->
       <div class="col-lg-6 col-md-8 col-sm-12">
@@ -8,7 +8,7 @@
             <h1 id="titulo-form">  SIGN IN  - SmartCities</h1>
           </div>-->
           <div class="card-body">    
-            <form>
+            <form (ngSubmit)="login(admin)">
               <div class="form-group">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <label for="exampleInputEmail1">Email address</label>
@@ -20,7 +20,7 @@
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="password" name="password" required>
               </div>      
-              <button type="submit" class="btn btn-info col-lg-12 col-12" (click)="login()"> Sign In </button>
+              <button type="submit" class="btn btn-info col-lg-12 col-12"> Sign In </button>
             </form>
           </div>
           <div class="card-footer text-muted">

@@ -1,0 +1,19 @@
+:host{
+    padding: 0;
+}
+#map{    
+    margin-top: 3%;
+    height: 400px;     
+}
+#form-campus{
+    color: #1a237e;
+    font-style: italic;
+    font-weight: bolder;
+}
+#paginationControl{
+    margin-top: 1em;
+}
+#page-container{
+    margin-top: 1em;
+    padding-bottom: 4%;
+}

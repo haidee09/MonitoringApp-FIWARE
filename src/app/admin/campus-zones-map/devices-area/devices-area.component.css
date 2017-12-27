@@ -1,0 +1,28 @@
+:host{
+    padding: 0;
+}
+#encabezado{
+    margin: 1em 0em 0 0;
+}
+#information{
+    margin: 1em;
+}
+#formMap{
+    padding-left: 0;
+}
+#formDevices{
+    margin: 0;
+    padding: 0;
+}           
+.basic-textarea textarea {
+    height: auto;
+}
+.card{
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+#map{    
+    height: 500px;   
+    width: 100%;  
+    margin-bottom: 3%;
+}

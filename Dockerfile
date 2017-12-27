@@ -1,23 +1,24 @@
 # Create image based on the official Node 8 image from dockerhub
-FROM node:8
+FROM mhart/alpine-node:8
 
 # Create a directory where our app will be placed
-RUN mkdir -p /monitoringappfiware
+RUN mkdir -p /appwebfiware
 
 # Change directory so that our commands run inside this new directory
-WORKDIR /monitoringappfiware
+WORKDIR /appwebfiware
 
 # Copy dependency definitions
-COPY package.json /monitoringappfiware
+COPY package.json /appwebfiware
 
 # Install dependecies
+RUN npm i
 RUN npm install express
 RUN npm install path
 RUN npm install http
 
 # Get all the code needed to run the app
-COPY /dist /monitoringappfiware
-COPY server.js /monitoringappfiware
+COPY ./ /appwebfiware
+COPY server.js /appwebfiware
 
 # Expose the port the app runs in
 EXPOSE 3500

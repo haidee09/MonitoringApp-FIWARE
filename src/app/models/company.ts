@@ -1,12 +1,12 @@
 export class Company{
-    idCompany: string;
+    id: string;
     name: string;
     dateCreated: Date;
     dateModified: Date;
     status: any;
     
     constructor(
-        idCompany: string,
+        id: string,
         name: string,
         dateCreated: Date,
         dateModified: Date,

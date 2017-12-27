@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { CommonData } from '../../models/commondata';
 import { Observable } from 'rxjs/Rx';
 import { Subscription } from 'rxjs/Subscription';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertService } from '../../services/alert.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user';
+import { log } from 'util';
 
 @Component({
   selector: 'app-users-register',
@@ -14,73 +16,16 @@ import { User } from '../../models/user';
   host:{'class':'col-xl-10'}
 })
 export class UsersRegisterComponent{
-
-  //firstname:any;
-  //lastname:any;
-  //email:any;
-  role:any = null;
-  object: CommonData;
-  subscription: Subscription;
-  collectionUsers: User[];
-
-  constructor(private route: Router, private userService: UserService){
-    this.object = new CommonData('','','','');
-    this.listUsers();
-    //this.listSG();
+  alerts = [];
+  connection: any;
+  constructor(private alertService:AlertService){}
+  ngOnInit() {
+    this.connection = this.alertService.getMessages().subscribe(newAlert => {
+      console.log(newAlert);
+    })
   }
-  listUsers(){ 
-    this.subscription = this.userService.listUsers().subscribe(
-      (res) => {
-        this.collectionUsers = res;
-        console.log(this.collectionUsers);
-      },
-      (error)=> {
-        console.log(error);
-      }
-    )
-  }
-  /*listSG(){
-    this.sgService.listSG().subscribe(
-      (res) => {
-        this.collectionSG = res;
-        console.log(this.collectionUsers);
-      },
-      (error)=> {
-        console.log(error);
-      }
-    )
-  }*/
-  clearInputs(){
-    this.object.idUser = '';
-    this.object.name = '';
-    this.object.lastName = '';
-    this.object.email = '';
-    this.role = null;
-  }
-  registerUser(){
-    this.userService.createUser(this.object).subscribe(
-      (res) => {
-        console.log(res);
-        this.clearInputs();
-        this.listUsers();
-        console.log("Usuario registrado con exito");
-      },
-      (error) => {
-        console.log("Hubo un error al guardar los datos del guardia de seguridad");
-      }
-    )
-  }
-      /*this.sgService.createSecurityGuard(this.object).subscribe(
-        (res) =>{
-          console.log(res);
-          this.clearInputs();
-          console.log("Guardia de seguridad registrado con éxito");
-        },
-        (error) =>{
-          console.log("Hubo un error al guardar los datos del guardia de seguridad");
-        }
-      )*/
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.connection.unsubscribe();
   }
 }
+

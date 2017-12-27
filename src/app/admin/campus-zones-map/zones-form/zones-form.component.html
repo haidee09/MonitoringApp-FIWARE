@@ -1,0 +1,60 @@
+<section id="information">
+  <p class="text-justify"> As a Administrator, you can create, edit, update and delete campus and zones. The campus and  zones created will be visualized for all the final users. </p>
+  <p class="text-justify">  </p>
+</section>
+<div class="container">
+  <div class="row"> 
+    <div class="col-4" id="divs">
+      <div class="col-12" id="formZone" *ngIf="selectZone">
+          <div class="row justify-content-center" *ngIf="drawWarningMessage" >
+            <h4 style="color: red;" class="text-center">{{ drawWarningMessage }}</h4>
+          </div>
+          <div class="card hoverable">
+            <div class="card-header text-center font-weight-bold text-primary"> 
+              <h3 id="titulo-form" class="text-success"> Zone Form </h3>
+            </div>
+            <div class="card-body">    
+            <form (ngSubmit)="registerZone()">  
+              <div class="form-group">
+                <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
+                <label for="InputCampusList">Campus Name</label>
+                <select id="InputCampusList" class="form-control" [(ngModel)]="selectedCampus" name="selectedCampus">       
+                  <option selected value="null" disabled>Select a campus name</option>
+                  <option *ngFor="let item of listCampus" [ngValue]="item._id"> {{item.name}} </option>
+                </select>
+              </div>
+              <div class="form-group">
+                <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                <label for="InputZoneName">Zone Name</label>
+                <input type="text" class="form-control" id="InputZoneName" placeholder="Insert the zone name" [(ngModel)]="zone.name" name="name" required >
+              </div> 
+              <button type="submit" class="btn btn-info col-lg-12 col-12"> <i class="fa fa-floppy-o" aria-hidden="true"></i> Save Information </button>      
+            </form>
+          </div>
+        </div> 
+    </div>
+  </div>
+  <div class="col-8" id="formMap">
+    <h3 style="color: #1a237e;" class="text-center">Map for delimite Zones of Campus</h3>
+    <div class="row col-12 justify-content-center">
+      <div class="col-5">
+        <button type="button" class="btn btn-secondary col-lg-12 col-12" (click)="startDraw()"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Start draw </button>
+      </div>
+      <div class="col-5">
+        <button type="button" class="btn btn-warning col-lg-12 col-12" (click)="endDraw()"> 
+          <i class="fa fa-pencil-square" aria-hidden="true"></i> End draw 
+        </button>                    
+      </div> 
+    </div> 
+    <div class="col-12 hoverable" id="map" *ngIf="!draw" leaflet [leafletOptions]="optionsInit"></div>
+    <div class="col-12 hoverable" id="map" *ngIf="draw"
+      leaflet
+      leafletDraw
+      [leafletOptions]="options"
+      [leafletDrawOptions]="drawOptions"
+      (leafletMapReady)="onMapReady($event)">
+    </div>
+  </div> 
+  </div>
+</div>
+ 

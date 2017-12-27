@@ -33,4 +33,9 @@ export class SecurityguardService {
     .map((res) => res.json()) // ...and calling .json() on the response to return data
     .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
+  deleteSG(idUser: string): Observable<SecurityGuard>{
+    return this.http.delete(`${this.service_url}/securityGuard/${idUser}`) // ...using post request
+    .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+  }
 }

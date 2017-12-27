@@ -1,12 +1,17 @@
 <div class="" id="container-principal">
     <nav class="navbar navbar-light  navbar-expand flex-column flex-md-row bd-navbar" id="nav-superior">
-      <a class="navbar-brand col-auto mr-auto" href="#">
+      <a class="navbar-brand col-auto mr-auto hoverable" href="/admin/dashboard">
         <img src="./assets/images/logo.png" width="70" height="70" class="d-inline-block align-middle" alt="">
         FIWARE Driving Monitor 
       </a>
       <ul class="navbar-nav" id="items-navbar-superior">
-        <li class="nav-item dropdown col-auto">
-          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> 
+        <li class="nav-item col-auto">
+          <a class="nav-link" routerLink="/admin/alerts/alerts-list" routerLinkActive="active-link-notifications" (click)="resetAlertsCounter()">
+            <i class="fa fa-bell-o" aria-hidden="true"></i> Notifications <span class="badge badge-pill orange">{{alertsNumber}}</span>
+          </a>
+        </li>  
+        <!--<li class="nav-item dropdown col-auto">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> "
             <i class="fa fa-bell-o" aria-hidden="true"></i> Notifications <span class="badge badge-primary badge-pill">14</span>
           </a>
           <div class="dropdown-menu">
@@ -24,19 +29,15 @@
               Another Event
             </a>
           </div>
-        </li>
+        </li>-->
         <li class="nav-item dropdown col-auto">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-user-circle" aria-hidden="true"></i> Administrator
           </a>
           <div class="dropdown-menu">
-            <a class="dropdown-item" routerLink="/login">
-              <i class="fa fa-sign-out" aria-hidden="true"></i>Log Out
-            </a>
+            <a class="dropdown-item" routerLink="/login"><i class="fa fa-sign-out" aria-hidden="true"></i>Log Out</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" routerLink="/admin/profile-setting"><i class="fa fa-cog" aria-hidden="true"></i>
-              Profile Setting
-            </a>
+            <a class="dropdown-item" routerLink="/admin/profile-setting"><i class="fa fa-cog" aria-hidden="true"></i>Profile Setting</a>
           </div>
         </li>
       </ul>
@@ -54,7 +55,7 @@
             </h5>
           </div>  
           <!-- aqui agregar/quitar navbar class to nav element-->
-          <nav class="navbar-expand-xl col-12" id="nav-sidebar">            
+          <nav class="navbar-expand-xl" id="nav-sidebar">            
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <img src="./assets/images/hamburger-menu-icon.png" width="40" height="40" alt=""><span class="navbar-toggler-icon"></span>
             </button>            
@@ -76,15 +77,20 @@
                       <i class="fa fa-user " aria-hidden="true"></i>
                       Security Guards
                     </a>
-                    <a class="nav-link" routerLink="/admin/access-log" routerLinkActive="active-link">
-                      <i class="fa fa-check-circle-o" aria-hidden="true"></i>Access Log
-                    </a>
                   </ul>
                 </li> 
                 <li class="nav-item">
-                  <a class="nav-link" routerLink="/admin/campus-zones" routerLinkActive="active-link">
-                    <i class="fa fa-map-o fa-2x " aria-hidden="true"></i>Campus & Zones
-                  </a>
+                  <a class="nav-link" data-target="#navbarDropdownMenuLinkCampus" data-toggle="collapse" href="#" aria-controls="navbarDropdownMenuLinkCampus" aria-expanded="true" >
+                    <i class="fa fa-map-o fa-2x " aria-hidden="true"></i>Areas<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                  <ul class="collapse show" id="navbarDropdownMenuLinkCampus">
+                    <a class="nav-link" routerLink="/admin/campus-zones" routerLinkActive="active-link">
+                      <i class="fa fa-map-marker" aria-hidden="true"></i>
+                      Campus & Zones
+                    </a>
+                    <a class="nav-link" routerLink="/admin/user-devices" routerLinkActive="active-link">
+                      <i class="fa fa-street-view" aria-hidden="true"></i> User Devices
+                    </a>
+                  </ul>
                 </li> 
                 <li class="nav-item">
                   <a class="nav-link" routerLink="/admin/alerts" routerLinkActive="active-link">

@@ -1,5 +1,5 @@
 export class SecurityGuard{
-    idUser:string;
+    id:string;
     refCompany: string;
     refCampus: string;
     refZone: string;
@@ -9,18 +9,22 @@ export class SecurityGuard{
     email:string;
     password: string;
     refDevices: Array<String>;
+    checkInTime: string;
+    departureTime: string;
     dateCreated: Date;
     dateModified: Date;
     status: any;
     role: any;
 
     constructor(
-        idUser:string,
+        id:string,
         //refCompany: string,
         //phoneNumber: Array<String>,
         name: string,
         lastName: string,
         email:string,
+        checkInTime: string,
+        departureTime: string,
         //password: string,
         //refDevices: Array<String>,
         dateCreated: Date,

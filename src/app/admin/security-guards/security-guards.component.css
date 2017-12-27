@@ -11,3 +11,10 @@
 #results{
     padding: 1em;
 }
+li a.active-link:link, li a.active-link:visited{
+    color: #040e58;
+    background-color: rgb(181, 227, 240); 
+    border-radius: 3px; 
+    font-weight: bold;
+   /*padding-left: 5%;*/
+}

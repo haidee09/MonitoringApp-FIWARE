@@ -1,15 +1,15 @@
 export var single = [
     {
       "name": "SuddenStop",
-      "value": 320
+      "value": 32
     },
     {
       "name": "WrongWay",
-      "value": 100
+      "value": 10
     },
     {
       "name": "UnauthorizedSpeed",
-      "value": 190
+      "value": 19
     }
   ];
   

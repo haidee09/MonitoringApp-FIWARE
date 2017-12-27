@@ -11,21 +11,39 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class AuthService {
-  //URL MODIFICAR
+
   private service_url = environment.back_sdk;
-  //private userSource = new Subject<User>();
-  //user$ = this.userSource.asObservable();
+  private token: string;
+  private adminSource = new Subject<Admin>();
+  admin$ = this.adminSource.asObservable();
+
 
   constructor(public http: Http) { }
+  
+  setAdmin(user: Admin) {
+    this.adminSource.next(user);
+  }
 
-  registerAdmin(admin: Admin): Observable<Admin[]> {
+  loginUser(admin): Observable<Object> {
     let body = JSON.stringify(admin);
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let headers = new Headers();
+		headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
-    //URL MODIFICAR
-    return this.http.post(`${this.service_url}/administrator`, body, options) // ...using post request
-    .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    return this.http.post(`${this.service_url}/authenticateAdmin`, body, options)
+    .map((res) => this.setToken(res));
+  }
+
+  setToken(res){
+    let body = JSON.parse(res['_body']);
+    if(body['success'] == true ){
+      this.token = body['token'];
+      localStorage.setItem('currentUser', JSON.stringify({
+        adminData: body['admin'],
+        token: this.token
+      }));
+    }
+    console.log(body);
+    return body;
   }
 
 }

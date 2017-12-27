@@ -1,0 +1,30 @@
+
+<section class="container" id="page-container"> 
+  <form id="form-campus">
+    <div class=" form-group">
+      <label for="InputCampusList"> <h5> <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>  Select a campus: </h5></label>
+      <select id="InputCampusList" class="form-control" [(ngModel)]="campusQuery" (change)="onChangeValueCampus($event.target.value)" name="campusQuery">       
+        <option selected value="null" disabled>Select a campus name</option>
+        <option *ngFor="let item of listCampus" [ngValue]="item._id"> {{item.name}} </option>
+      </select>
+    </div>
+  </form> 
+  <div class="row col-12">
+    <div class="col-8 card hoverable" id="map" *ngIf="campusQuery===null && !showAlertOnMap && !showMapAlerts" leaflet [leafletOptions]="optionsInit"></div>
+    <div class="col-8 card hoverable" id="map" *ngIf="showMapAlerts && !showAlertOnMap" leaflet [leafletOptions]="options" [leafletLayers]="layers"></div>
+    <div class="col-8 card hoverable" id="map" *ngIf="showAlertOnMap && !showMapAlerts" leaflet [leafletOptions]="optionsMapAlert" [leafletCenter]="center" [leafletLayers]="layers"></div>
+    <div class="col-4" id="cardResultsAlerts">
+      <div class="justify-content-center">
+        <h4 class="text-center"> List of Alerts </h4>
+      </div>
+      <ul class="card list-group hoverable">
+        <li class="list-group-item" *ngFor="let item of alertsDB | paginate: { itemsPerPage: 5, currentPage: p }" (click)="searchAlertOnMap(item)"> 
+          <a> Category: {{  item.category}} </a>
+          <br>
+          <a> Subcategory: {{ item.subCategory}} </a>
+        </li>
+      </ul>
+      <pagination-controls class="card text-center" (pageChange)="p = $event" previousLabel="Previous" nextLabel="Next" ></pagination-controls>
+    </div> 
+  </div>  
+</section>   

@@ -25,7 +25,7 @@ export class AdminService {
     //URL MODIFICAR
     return this.http.post(`${this.service_url}/administrator`, body, options) // ...using post request
     .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    .catch((error:any) => Observable.throw(error.json() || 'Server error')); //...errors if any
   }
   readAdmin(idAdministrator: String): Observable<Admin[]>{
     let headers = new Headers({'Accept': 'application/json'});
@@ -33,7 +33,7 @@ export class AdminService {
     //URL MODIFICAR
     return this.http.get(`${this.service_url}/administrator/${idAdministrator}`, options) // ...using post request
     .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
-    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+    .catch((error:any) => Observable.throw(error.json() || 'Server error')); //...errors if any
   }
 
 }

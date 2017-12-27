@@ -24,7 +24,7 @@ export class ZoneService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
   
-  readZone(nameZone: String): Observable<Zone[]> {
+  readZone(nameZone: String): Observable<Zone> {
     
     let headers = new Headers({ 'Accept': 'application/json' });
     let options = new RequestOptions({ headers: headers });
@@ -34,8 +34,8 @@ export class ZoneService {
     .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
 
-  listZones(): Observable<Zone[]> {
-    
+  listZones(): Observable<Zone[]> {   
+
     let headers = new Headers({ 'Accept': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     //URL MODIFICAR
@@ -43,12 +43,21 @@ export class ZoneService {
     .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
     .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }
+  listZonesofCampus(idCampus: string): Observable<Zone[]>{
 
-  queryContext(idZone: String): Observable<Object> {
     let headers = new Headers({ 'Accept': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     //URL MODIFICAR
-    return this.http.get(`${this.service_url}/devices/${idZone}`, options) // ...using post request
+    return this.http.get(`${this.service_url}/zonesCampus/${idCampus}`, options) // ...using post request
+    .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
+    .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
+
+  }
+  queryContextDevices(idZone: String): Observable<Object[]> {
+    let headers = new Headers({ 'Accept': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    //URL MODIFICAR
+    return this.http.get(`${this.service_url}/devicesZone/${idZone}`, options) // ...using post request
     .map((res:Response) => res.json()) // ...and calling .json() on the response to return data
     .catch((error:any) => Observable.throw(error.json().error || 'Server error')); //...errors if any
   }

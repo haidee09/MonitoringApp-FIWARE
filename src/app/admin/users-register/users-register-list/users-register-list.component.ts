@@ -1,9 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonData } from '../../../models/commondata';
 import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
+//import { Subscription } from 'rxjs/Subscription';
 import { FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { User } from '../../../models/user';
 
@@ -15,15 +14,13 @@ import { User } from '../../../models/user';
 })
 export class UsersRegisterListComponent implements OnInit{
  
-  subscriptionList: Subscription;
-  collectionUsers: User[];
+  //subscriptionList: Subscription;
+  collectionUsers: User[] = [];
 
-  constructor(private route: Router, private userService: UserService){
-    //this.listUsers();
-    //this.listSG();
+  constructor(private userService: UserService){
   }
-  ngOnInit(){ 
-    this.subscriptionList = this.userService.listUsers().subscribe(
+  listUsers(){
+    this.userService.listUsers().subscribe(
       (res) => {
         this.collectionUsers = res;
         console.log(this.collectionUsers);
@@ -33,8 +30,29 @@ export class UsersRegisterListComponent implements OnInit{
       }
     )
   }
+  ngOnInit(){ 
+   this.listUsers();
+  }
   /*ngOnDestroy() {
     this.subscriptionList.unsubscribe();
   }*/
+  deleteUser(itemID: string){
+    //PETICION DE LAS ALERTAS NUEVAMENTE
+    this.collectionUsers = [];
+    this.userService.deleteUser(itemID).subscribe(
+      (res) => {
+        console.log(res);
+        this.listUsers();
+      },
+      (error) =>{
+        console.log(error);
+      }
+    )   
+  }
+  updateUserData(){
 
+  }
+  viewUserInfo(){
+
+  }
 }

@@ -1,5 +1,5 @@
 export class User{
-    idUser:string;
+    id:string;
     refCompany: string;
     phoneNumber: Array<String>;
     name: string;
@@ -17,7 +17,7 @@ export class User{
     role: any;
 
     constructor(
-        idUser:string,
+        id:string,
         refCompany: string,
         phoneNumber: Array<String>,
         name: string,

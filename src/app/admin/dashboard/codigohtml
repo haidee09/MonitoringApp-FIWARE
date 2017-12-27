@@ -1,0 +1,99 @@
+  <div class="" id="nav-content">
+    <nav class="navbar">
+      <h2 style="color: #1a237e;"> Dashboard </h2>
+    </nav>
+    <section id="principal-information">
+      <p class="text-justify"> Alert Charts - Record. </p>
+      <p class="text-justify"> NOTE: The record are shown per alert type. </p>
+    </section>
+    <!--<button class="btn btn-default" (click)="showSuccess()">Toastr Tester</button>-->
+    <!--<push-notification #notification
+      title="ng2-notifications"
+      body="Component for Native Push Notifications"
+      icon="https://angular.io/assets/images/logos/angular/angular.png"
+      closeDelay="5000"
+      (show)="myShowFunction($event)"
+      (close)="myCloseFunction($event)">
+    </push-notification>-->
+
+    <section id="filters">
+      <h4>Chart Filters</h4>
+      <div class="">
+        <div class="row">
+          <div class="col-4">
+            <p><i class="fa fa-map-o" aria-hidden="true"></i> Select a campus</p>
+            <select id="InputCampusList" class="form-control" [(ngModel)]="campusQuery" (change)="onChangeValueCampus($event.target.value)" name="campusQuery">       
+              <option selected value="null" disabled>Select a campus name</option>
+              <option *ngFor="let item of listCampus" [ngValue]="item._id"> {{item.name}} </option>
+            </select>
+          </div>
+          <div class="col-4" *ngIf="campusQuery!=null">
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i> Select a zone map</p>
+            <select id="InputCampusList" class="form-control" [(ngModel)]="selectedZone" name="selectedZone">       
+              <option selected value="null" disabled>Select the zone name</option>
+              <option *ngFor="let item of listZonesCampusSelected" [ngValue]="item._id"> {{item.name}} </option>
+            </select>
+          </div>
+          <div class="col-4">
+            <p><i class="fa fa-street-view" aria-hidden="true"></i> Select a user role</p>
+            <select id="InputUserRole" class="form-control">
+              <option selected>Choose a User Role</option>
+              <option value="">User</option>
+              <option value="">Security Guard</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="graphs">
+      <div class="container-fluid hidden-sm-down">
+        <div class="row">
+          <div class="col-lg-6 col-sm-11">
+              <!--<ngx-charts-area-chart
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              [autoScale]="autoScale"
+              (select)="onSelect($event)">
+            </ngx-charts-area-chart>-->
+
+            <ngx-charts-bar-vertical
+              [view]="view"
+              [scheme]="colorScheme"
+              [results]="single"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              (select)="onSelect($event)">
+            </ngx-charts-bar-vertical>
+          </div>  
+          <div class="col-lg-6 col-sm-11">
+            <ngx-charts-pie-chart
+              [view]="view"
+              [scheme]="colorSchemePie"
+              [results]="single"
+              [legend]="showLegend"
+              [explodeSlices]="explodeSlices"
+              [labels]="showLabels"
+              [doughnut]="doughnut"
+              [gradient]="gradient"
+              (select)="onSelect($event)">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+    </div>   
+    </section>
+  </div>

@@ -1,6 +1,6 @@
 export class Admin{
     
-    idAdministrator: string;
+    id: string;
     refCompany: string;
     name: string;
     lastName: string;
@@ -11,7 +11,7 @@ export class Admin{
     status: any;
 
     constructor( 
-        idAdministrator: string,
+        id: string,
         refCompany: string,
         name: string,
         lastName: string,

@@ -1,0 +1,32 @@
+:host{
+    padding: 0;
+}
+#information{
+    margin: 1em;
+}
+#formMap{
+    padding-left: 0;
+}
+#formCampus{
+    margin: 0;
+    padding: 0;
+} 
+.form-group {
+    margin-bottom: 0; 
+}          
+.basic-textarea textarea {
+    height: auto;
+}
+.card{
+    margin-top: 14%;
+    margin-bottom: 5%;
+}
+.btn{
+    padding: 1em;
+}
+#map{    
+    height: 500px;   
+    width: 100%;  
+    margin-bottom: 3%;
+}
+

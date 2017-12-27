@@ -1,0 +1,86 @@
+<div class="row container justify-content-center col-12" id="encabezado">
+  <h3 style="color: #1a237e;"> Devices inside of an Area</h3>
+</div>
+<div class="container">
+  <div class="row"> 
+    <div class="col-4" id="divs">
+      <div class="col-12" id="formDevices">
+        <div class="card hoverable">
+          <div class="card-header text-center font-weight-bold text-primary"> 
+            <h3 id="titulo-form" class="text-success"> Consult Form  </h3>
+          </div>
+          <div class="card-body">    
+            <form>
+              <div class="form-group">
+                <label for="InputCampusList"> Select an option </label>
+                <select id="InputCampusList" class="form-control" [(ngModel)]="selectedOption" name="selectedOption">       
+                  <option selected value="null" disabled> Select and option </option>
+                  <option value='campus'> Campus </option>
+                  <option value='zone'> Zone </option>
+                </select>
+              </div>
+              <div class="form-group" *ngIf="selectedOption==='campus'">
+                <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
+                <label for="InputCampusList">Campus Name</label>
+                <select id="InputCampusList" class="form-control" [(ngModel)]="campusQuery" name="campusQuery">       
+                  <option selected value="null" disabled>Select a campus name</option>
+                  <option *ngFor="let item of listCampus" [ngValue]="item._id"> {{item.name}} </option>
+                </select>
+              </div>
+              <div *ngIf="selectedOption==='zone'">
+                <div class="form-group">
+                  <i class="fa fa-map-o fa-2x" aria-hidden="true"></i>
+                  <label for="InputCampusList">Campus Name</label>
+                  <select id="InputCampusList" class="form-control" [(ngModel)]="campusQueryZone" (change)="onChangeValueCampus($event.target.value)" name="campusQueryZone">       
+                    <option selected value="null" disabled>Select a campus name</option>
+                    <option *ngFor="let item of listCampus" [ngValue]="item._id"> {{item.name}} </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <i class="fa fa-map-marker fa-2x" aria-hidden="true"></i>
+                  <label for="InputZoneName">Zone Name</label>
+                  <select id="InputCampusList" class="form-control" [(ngModel)]="zoneQuery" name="zoneQuery">       
+                    <option selected value="null" disabled>Select a zone name</option>
+                    <option *ngFor="let item of listZones" [ngValue]="item._id"> {{item.name}} </option>
+                  </select>
+                </div> 
+              </div>
+              <button type="button" class="btn btn-info col-lg-12 col-12" (click)="queryContext()"> Consult Information</button>      
+            </form>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <div class="col-8" id="formMap">
+      <h4 style="color: #1a237e;" class="text-center">Devices Map </h4>
+      <div class="col-12 hoverable" id="map" *ngIf="!showMapDevices" leaflet [leafletOptions]="optionsInit"></div>
+      <div class="col-12 hoverable" id="map" *ngIf="showMapDevices"
+        leaflet
+        [leafletOptions]="options"
+        [leafletLayers]="layers">
+      </div>
+    </div> 
+  </div>
+</div>
+<!--<section id="results">
+  <table class="table table-striped table-bordered table-responsive text-center"> 
+    <thead class="thead-inverse">
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Campus</th>
+        <th class="text-center">Zone</th>
+        <th class="text-center">Edit</th>
+        <th class="text-center">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="text-center">1</th>
+        <td>Palmira</td>
+        <td>Electrónica</td>
+        <td><a class="btn btn-success btn-sm green" role="button"><i class="fa fa-pencil text-white"></i></a></td>
+        <td><a class="btn btn-danger btn-sm red"><i class="fa fa-trash text-white" aria-hidden="true"></i></a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>-->
