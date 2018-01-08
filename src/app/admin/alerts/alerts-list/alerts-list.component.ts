@@ -3,8 +3,6 @@ import { AlertService } from '../../../services/alert.service';
 import * as L from 'leaflet';
 import { Observable } from 'rxjs/Observable';
 import { Alerts } from '../../../models/alerts';
-
-
 @Component({
   selector: 'app-alerts-list',
   templateUrl: './alerts-list.component.html',
@@ -21,7 +19,7 @@ export class AlertsListComponent implements OnInit {
   p: number;
   constructor(public alertService:AlertService) {
     this.p = 1;
-  }  
+  }
   alertsList(){
     //INICIO ALERTAS-- OBTENER TODAS LAS ALERTAS DE LA BD
      this.alertService.listAlerts().subscribe(

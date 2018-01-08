@@ -19,7 +19,7 @@ export class LoginComponent{
   }
 
   login(){
-    /*let admin = {
+    let admin = {
       email: this.email,
       password: this.password
     }
@@ -34,12 +34,14 @@ export class LoginComponent{
       else {
         this.message = res['message'];
       }
-    });*/
+    });
+    /*
     if(this.email === "admin@cenidet.edu.mx" && this.password === "admin12345"){
       this.router.navigate(['/admin']);
     }
     else{
       console.log("Contraseña incorrecta")
     }
+    */
   }
 }

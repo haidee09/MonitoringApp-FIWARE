@@ -1,10 +1,7 @@
 import { Component, OnInit, OnDestroy,Input } from '@angular/core';
 import { Campus } from '../../../models/campus';
 import { CampusService } from '../../../services/campus.service';
-//import { AlertService } from '../../../services/alert.service';
 import * as L from 'leaflet';
-//import { Observable } from 'rxjs/Observable';
-//import { Alerts } from '../../../models/alerts';
 import { MenuComponent } from '../../menu/menu.component';
 import { AlertService } from 'app/services/alert.service';
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +13,6 @@ import { Observable } from 'rxjs/Observable';
   host: {'class':'col-xl-10'}
 })
 export class AlertsMapComponent implements OnInit, OnDestroy{
-  
   map: L.Map;
   optionsInit: L.MapOptions;
   optionsMapAlert: L.MapOptions;
@@ -94,12 +90,11 @@ export class AlertsMapComponent implements OnInit, OnDestroy{
   ngOnInit(){
     //INICIO ALERTAS-- OBTENER TODAS LAS ALERTAS DE LA BD
     this.getAlerts();
-    
     //CONEXIÓN CON EL SERVICIO DE ALERTAS PARA EL SOCKET QUE ESPERA LA LLEGADA DE UNA NUEVA ALERTA.
     this.connection = this.alertService.getMessages().subscribe(newAlert => {
       //PETICION DE LAS ALERTAS NUEVAMENTE
       this.alertsDBTemp = [];
-      this.alertsDB = []; 
+      this.alertsDB = [];
       console.log(this.alertsNumber);
       this.getAlerts();
     })
